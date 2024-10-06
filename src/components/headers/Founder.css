@@ -1,0 +1,127 @@
+.founder-container {
+    width: 100%;
+    position: relative;
+    background-color: #00354f;
+    display: flex;
+    align-items: center;
+    background-image: url('../../images/road.png');
+    /* padding: 4rem 0 0; */
+    font-family: "Encode Sans", sans-serif;
+    background-position: 103% bottom;
+
+    background-size: 52%;
+    background-repeat: no-repeat;
+}
+.founder-img div img{
+    width: 100%;
+}
+
+.founder-notes{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /* padding: 2rem 0 0; */
+}
+.title{
+    font-size: 36px;
+    font-weight: 400;
+    color:#fff
+}
+
+.founder-notes p{
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+    max-width: 700px;
+}
+
+.founder-container .custom-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.founder-container .custom-container2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.custom-container2 {
+    width: 97%;
+    display: flex;
+}
+
+.founder-content {
+    width: calc(50% - 1rem);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: #FFF;
+    position: relative;
+    z-index: 99;
+    /* padding: 6rem 0; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.founder-img {
+    width: calc(50% - 1rem);
+    line-height: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 1024px) {
+    .founder-container {
+        background-position: bottom;
+        background-size: 90%;
+        padding: 3rem 0; /* Adjust padding for smaller screens */
+    }
+
+    .founder-container .custom-container2 {
+        justify-content: center;
+        gap: 1rem; /* Reduce gap on smaller screens */
+    }
+
+    .founder-content, 
+    .founder-img {
+        width: 100%; /* Make content and image take full width on smaller screens */
+        padding: 2rem 0; /* Adjust padding for better spacing */
+        text-align: center; /* Center-align text on smaller screens */
+    }
+
+    .founder-img {
+        justify-content: center; /* Center the image on smaller screens */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .founder-container {
+        padding: 2rem 0;
+    }
+
+    .founder-content {
+        padding: 1.5rem 0;
+    }
+
+    .founder-img img {
+        max-width: 80%; /* Limit image width on small devices */
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .founder-container {
+        padding: 1.5rem 0;
+    }
+
+    .founder-content {
+        font-size: 0.9rem; /* Reduce font size on very small screens */
+        padding: 1rem 0;
+    }
+
+    .founder-img img {
+        max-width: 70%; /* Further limit image size for small phones */
+    }
+}
