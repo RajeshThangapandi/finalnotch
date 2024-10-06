@@ -67,8 +67,8 @@ export const NavToggle = tw.button`
 `;
 
 export const MobileNavLinks = motion(styled.div`
-  ${tw`md:hidden z-10 fixed top-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-gray-900`}
-  background-color: white;
+  ${tw`md:hidden z-10 fixed top-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-black`}
+  background-color: black;
   
   ${NavLinks} {
     ${tw`flex flex-col items-center`}
