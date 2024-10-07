@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { MdArrowBack, MdArrowForward } from "react-icons/md"; // Material icons for navigation arrows
 import Header, { NavLink, NavLinks } from "../headers/light.js";
 import img1 from "../../images/img1.jpg";
-import img2 from "../../images/img2.jpg"; // Adjust this to your actual image path
-import img3 from "../../images/img3.jpg"; // Adjust this to your actual image path
-import "../headers/ModernNav.css";
+import img2 from "../../images/img2.jpg";
+import img3 from "../../images/img3.jpg";
+
 
 // Styled Header without any background
 const StyledHeader = styled(Header)`
@@ -18,17 +18,17 @@ const StyledHeader = styled(Header)`
 `;
 
 // Background Image container for each slide
-const BackgroundImage = styled.div`
-  background-image: url(${(props) => props.imageUrl});
-  background-size: cover;
-  background-position: center;
-  height: 100vh; /* Full height */
-  width: 100%; /* Full width */
-  position: relative;
-`;
+// const BackgroundImage = styled.div`
+//   background-image: url(${(props) => props.imageUrl});
+//   background-size: cover;
+//   background-position: center;
+//   height: 50vh; /* Full height */
+//   width: 100%; /* Full width */
+//   position: relative;
+// `;
 
 // Opacity overlay on the image
-const OpacityOverlay = tw.div`absolute inset-0 bg-black opacity-50 z-10`; // Adjusted opacity for a darker overlay
+const OpacityOverlay = tw.div`absolute inset-0 bg-black opacity-50 z-10`;
 
 // Icon Container for the navigation arrows
 const IconContainer = styled.div`
@@ -62,10 +62,9 @@ const TextOverlay = styled.div`
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  z-index: 15; // Ensure it is above the overlay
+  z-index: 15;
 `;
 
-// Import your local images
 const images = [
   {
     src: img1,
@@ -128,28 +127,8 @@ const FullWidthCarousel = ({ refs }) => {
   );
 
   return (
-
     <>
-       {/* <Slider ref={setSliderRef} {...settings}>
-        {imageUrls.map((imageData, index) => (
-          <BackgroundImage key={index} imageUrl={imageData.url}>
-            <OpacityOverlay />
-            <TextOverlay>
-              <h1>{imageData.text}</h1>
-            </TextOverlay>
-            <IconContainer>
-              <Icon onClick={() => sliderRef?.slickPrev()}>
-                <MdArrowBack />
-              </Icon>
-              <Icon onClick={() => sliderRef?.slickNext()}>
-
-                <MdArrowForward />
-              </Icon>
-            </IconContainer>
-          </BackgroundImage>
-        ))}
-      </Slider> */}
-      <div id="carousel-section" style={{ height: "100vh", overflow: "hidden" }}>
+      <div id="carousel-section" style={{ height: "70vh", overflow: "hidden" }}>
         <div className="carousel" style={{ height: "100%", width: "100%", position: "relative" }}>
           <div className="list">
             {images.map((image, index) => (
@@ -164,16 +143,14 @@ const FullWidthCarousel = ({ refs }) => {
             ))}
           </div>
 
-          <div className="arrows">
-            <button id="prev" onClick={handlePrev}>
-              &lt;
-            </button>
-            <button id="next" onClick={handleNext}>
-              &gt;
-            </button>
-          </div>
-
-          <div className="time"></div>
+          <IconContainer>
+            <Icon onClick={handlePrev}>
+              <MdArrowBack />
+            </Icon>
+            <Icon onClick={handleNext}>
+              <MdArrowForward />
+            </Icon>
+          </IconContainer>
         </div>
       </div>
 

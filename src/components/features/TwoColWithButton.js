@@ -13,13 +13,13 @@ import image3 from "../../images/3.png";
 import image4 from "../../images/4.png";
 
 
-const OuterContainer = tw.div`py-24`; // Increased padding for OuterContainer
+const OuterContainer = tw.div``; // Increased padding for OuterContainer
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-24 md:py-24 items-center`; // Increased margins for TwoColumn
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
 const TextColumn = styled(Column)(props => [
-  tw`md:w-6/12 mt-16 md:mt-0`,
+  tw`md:w-6/12  md:mt-0`,
   props.textOnLeft ? tw`md:mr-16 lg:mr-20 md:order-first` : tw`md:ml-16 lg:ml-20 md:order-last`
 ]);
 
@@ -37,7 +37,7 @@ const Subheading = styled(SubheadingBase)`
   color: #32c5d2;
   ${tw`text-center md:text-left`}
 `;
-const Heading = tw(SectionHeading)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+const Heading = tw(SectionHeading)` font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Description = styled.p`
   ${tw`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`}
   font-family: "Arial, sans-serif"; // Set the same font family as in "About Us"

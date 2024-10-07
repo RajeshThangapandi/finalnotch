@@ -125,3 +125,27 @@
         max-width: 70%; /* Further limit image size for small phones */
     }
 }
+
+.dot-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between dots */
+    margin-top: 20px; /* Space above the dots */
+}
+
+.dot {
+    width: 12px; /* Width of the dot */
+    height: 12px; /* Height of the dot */
+    background-color: black; /* Default color */
+    border-radius: 50%; /* Make it circular */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.dot.active {
+    background-color: #00aaff; /* Color for the active dot */
+}
+
+.dot:hover {
+    background-color: #0099cc; /* Color for hover effect */
+}

@@ -1,43 +1,94 @@
-import React from 'react';
-import styles from "./Founder.css"; // Corrected import for styles
-import user from "../../images/usertest.webp"; // This import seems unused; you can remove it if not needed.
+import React, { useState, useEffect } from 'react';
+import styles from "./Founder.css"; // Assuming the CSS file is configured correctly
+
+const founderMessages = [
+  {
+    title: "Founder's Thoughts",
+    message: `
+      From Our Founder
+      As we celebrate our achievements, we are filled with optimism about our future prospects.
+    `,
+    name: "A.D. Meenaachi Sundram",
+    position: "FOUNDER AND MANAGING PARTNER",
+    image: "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png",
+  },
+  {
+    title: "Manager's Vision",
+    message: `
+      Our journey is one of constant innovation and adaptation to the evolving business environment. We continue to inspire new generations.
+    `,
+    name: "M. Vetrivel Rajan",
+    position: "MANAGING PARTNER",
+    image: "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg",
+  },
+  {
+    title: "Partner's Mission",
+    message: `
+      We are driven by the desire to create sustainable solutions that enhance the quality of life globally. Our mission stands strong as we expand internationally.
+    `,
+    name: "B.Murugeshwari",
+    position: "PARTNER",
+    image: "https://i.pinimg.com/474x/0a/a8/58/0aa8581c2cb0aa948d63ce3ddad90c81.jpg",
+  }
+];
 
 const FounderVisionSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % founderMessages.length);
+  };
+
+  const handleDotClick = (index) => {
+    setCurrentIndex(index);
+  };
+
+  useEffect(() => {
+    const intervalDuration = currentIndex === 0 ? 4000 : 2000; // 4 seconds for the first image, 2 seconds for others
+    const interval = setInterval(() => {
+      handleNext();
+    }, intervalDuration);
+
+    return () => clearInterval(interval);
+  }, [currentIndex]); // Include currentIndex in the dependency array to reset the interval
+
+  const currentMessage = founderMessages[currentIndex];
+
   return (
     <section className="founder-vision-section">
       <div className="founder-container">
         <div className="custom-container">
           <div className="custom-container2">
             <div className="founder-content">
-              <h2 className='title'>Founder's Thoughts</h2>
+              <h2 className="title">{currentMessage.title}</h2>
               <div className="founder-notes">
-                <p>
-                From Our Founder
-As we celebrate our achievements, we are filled with optimism about our future prospects. 
-Chairman.
-                </p>
-                <p>
-                The dynamic growth of the Indian economy in tandem with global trends presents us with unparalleled opportunities for expansion. Our steadfast commitment to excellence and innovation empowers us to embrace this new chapter, allowing us to establish a significant presence on the international stage.
-
-Let us unite in this endeavor to carry our vision and values to new frontiers.
-
-
-                </p>
+                <p>{currentMessage.message}</p>
                 <div>
-                  <b>A.D. Meenaachi Sundram</b>
-                  <p>Chairman</p>
+                  <b>{currentMessage.name}</b>
+                  <p>{currentMessage.position}</p>
                 </div>
               </div>
             </div>
             <div className="founder-img">
-              <img 
-                src="https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png" 
-                alt="Transparent Image" 
-                className="founder-avatar" // Add a class for styling
+              <img
+                src={currentMessage.image}
+                alt={`${currentMessage.name}'s Image`}
+                className="founder-avatar"
               />
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Navigation dots */}
+      <div className="dot-container">
+        {founderMessages.map((_, index) => (
+          <div
+            key={index}
+            className={`dot ${currentIndex === index ? 'active' : ''}`}
+            onClick={() => handleDotClick(index)}
+          />
+        ))}
       </div>
     </section>
   );

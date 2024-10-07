@@ -12,13 +12,12 @@ const FormContainer = styled.div`
     ${tw`text-3xl sm:text-4xl font-bold text-white`}
   }
 `;
-
-const CompanyEmail = tw.p`text-lg text-teal-300 font-medium mt-4`;
-const SendEmailButton = tw.a`w-full sm:w-32 mt-6 py-3 bg-gray-100 text-[#00354f] rounded-full font-bold tracking-wide shadow-lg uppercase text-sm transition duration-300 transform focus:outline-none focus:shadow-outline hover:bg-gray-300 hover:text-primary-700 hocus:-translate-y-px hocus:shadow-xl`;
+const CompanyEmail = tw.p`text-lg text-teal-300 font-medium mb-8`;
+const SendEmailButton = tw.a`w-full sm:w-32  py-3 px-3  bg-gray-100 text-[#00354f] rounded-full font-bold tracking-wide shadow-lg uppercase text-sm transition duration-300 transform focus:outline-none focus:shadow-outline hover:bg-gray-300 hover:text-primary-700 hocus:-translate-y-px hocus:shadow-xl`; // Added 'mt-8' for extra spacing
 const SvgDotPattern1 = tw(SvgDotPatternIcon)`absolute bottom-0 right-0 transform translate-y-1/2 translate-x-1/2 -z-10 opacity-50 text-primary-500 fill-current w-24`;
 
 export default () => {
-  const companyEmail = "companyemail@example.com"; // Replace with the official company email
+  const companyEmail = "contracts@notchindiaprojects.com"; // Replace with the official company email
 
   return (
     <Container>
