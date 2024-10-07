@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
-import styled from "styled-components";
-import tw from "twin.macro";
+// import styled from "styled-components";
+// import tw from "twin.macro";
 
 import SimpleSubscribeNewsletter from "components/forms/SimpleSubscribeNewsletter";
 
@@ -16,12 +16,13 @@ const Footer = lazy(() => import("components/footers/SimpleFiveColumn"));
 const ProfileThreeColGrid = lazy(() => import("components/cards/ProfileThreeColGrid"));
 const MainFeature = lazy(() => import("components/features/TwoColWithButton"));
 const TabCardGrid = lazy(() => import("components/cards/TabCardGrid"));
-const Header = lazy(() => import("components/headers/light"));
+// const Header = lazy(() => import("components/headers/light"));
 const BackToTop = lazy(() => import("components/headers/BackTotop"));
 const MainFeature2 = lazy(() => import("components/features/TwoColSingleFeatureWithStats2"));
 const ThreeColCenteredStatsPrimaryBackground = lazy(() => import("components/features/ThreeColCenteredStatsPrimaryBackground"));
 
 // // Styled components
+
 // const FullPageLoader = styled.div`
 //   ${tw`flex items-center justify-center fixed inset-0 bg-gray-100 z-50`}
 // `;
@@ -142,29 +143,29 @@ const MainComponent = () => {
   const CareerRef = useRef(null);
   const ContactRef = useRef(null);
 
-  const videoRef = useRef(null); // Ref for the video element
+  // const videoRef = useRef(null); // Ref for the video element
 
-  const scrollToSection = (elementRef) => {
-    if (elementRef && elementRef.current) {
-      window.scrollTo({
-        top: elementRef.current.offsetTop,
-        behavior: "smooth",
-      });
-    }
-  };
+  // const scrollToSection = (elementRef) => {
+  //   if (elementRef && elementRef.current) {
+  //     window.scrollTo({
+  //       top: elementRef.current.offsetTop,
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // };
 
-  const handleWatchVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.play(); // Play the video
-      if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen(); // Enter full-screen mode
-      } else if (videoRef.current.webkitRequestFullscreen) { // Safari
-        videoRef.current.webkitRequestFullscreen();
-      } else if (videoRef.current.msRequestFullscreen) { // IE11
-        videoRef.current.msRequestFullscreen();
-      }
-    }
-  };
+  // const handleWatchVideo = () => {
+  //   if (videoRef.current) {
+  //     videoRef.current.play(); // Play the video
+  //     if (videoRef.current.requestFullscreen) {
+  //       videoRef.current.requestFullscreen(); // Enter full-screen mode
+  //     } else if (videoRef.current.webkitRequestFullscreen) { // Safari
+  //       videoRef.current.webkitRequestFullscreen();
+  //     } else if (videoRef.current.msRequestFullscreen) { // IE11
+  //       videoRef.current.msRequestFullscreen();
+  //     }
+  //   }
+  // };
 
   useEffect(() => {
     const timer = setTimeout(() => {
