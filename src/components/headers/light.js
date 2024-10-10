@@ -8,35 +8,64 @@ import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 import logo from "../../images/logotransparent.png";
 
 // Create StyledHeader with scrolling effect
-const StyledHeader = styled.header(({ isScrolled }) => [
-  tw`flex justify-between items-center w-full fixed top-0 left-0 z-50 px-4 transition-all duration-300`,
-  { backgroundColor: isScrolled ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0)' }, // Change background based on scroll
+// Create StyledHeader with a fixed white background
+const StyledHeader = styled.header(() => [
+  tw`flex justify-between items-center w-full fixed top-0 left-0 z-50 px-4 py-4 transition-all duration-300`, // Reduced padding
+  { backgroundColor: 'rgba(255, 255, 255, 1)', height: '70px' }, // Optional: Set a fixed height
 ]);
 
-// Add isScrolled to the props
+// Update NavLink styles with smaller font size
 export const NavLink = styled.a`
-  ${tw`my-2 lg:mx-4 lg:my-0 font-semibold tracking-wide transition duration-300 pb-1 border-b-2 border-transparent`}
+  ${tw`my-1 lg:mx-4 lg:my-0 font-semibold tracking-wide transition duration-300 pb-1 border-b-2 border-transparent`}
   
-  font-size: 1.1rem;
-  color: ${({ isScrolled }) => (isScrolled ? 'gray' : 'black')} !important; // Change color based on scroll
+  font-size: 0.9rem; // Reduced font size for a more compact look
+  color: black;
 
   &:nth-child(1) {
-    color: ${({ isScrolled }) => (isScrolled ? 'gray' : '#0ed1b2')} !important; // Keep this link colored differently if needed
+    color: ${({ isScrolled }) => (isScrolled ? 'gray' : '#0ed1b2')};
+  }
+
+  &.career-link {
+    color: black;
   }
 
   &:hover {
-    color: rgb(37, 150, 190) !important; // Change this to a color that contrasts well with white if desired
+    color: rgb(37, 150, 190);
   }
 
   @media (max-width: 1024px) {
-    color: ${({ isScrolled }) => (isScrolled ? 'gray' : 'white')} !important; // Ensure the links are white on smaller screens
+    color: black;
+    &:nth-child(1) {
+      color: #0ed1b2;
+    }
   }
 
   @media (max-width: 1024px) {
-    font-size: 1.0rem;
+    font-size: 0.8rem; // Further reduce font size for mobile
   }
 `;
 
+export const PrimaryLink = tw(NavLink)`
+  lg:mx-0 px-6 py-2 rounded bg-green-500 text-gray-100
+  hocus:bg-green-700 hocus:text-gray-200 focus:shadow-outline border-b-0
+`;
+
+// Update LogoLink padding to reduce height
+export const LogoLink = styled(NavLink)`
+  ${tw`flex items-center font-black border-b-0 text-2xl! ml-0!`};
+  padding: px; // Reduced padding
+  border-radius: 8px;
+
+  img {
+    ${tw`w-16 h-16 mr-3`} // Reduce logo size if needed
+  }
+`;
+
+// Make sure to check the height of the MobileNavLinksContainer if needed
+export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between md:hidden`;
+
+
+// Update NavLink styles
 
 export const NavLinks = styled.div`
   ${tw`inline-block flex lg:flex-row lg:items-center`}
@@ -47,33 +76,33 @@ export const NavLinks = styled.div`
   }
 `;
 
-export const PrimaryLink = tw(NavLink)`
-  lg:mx-0 px-8 py-3 rounded bg-green-500 text-gray-100
-  hocus:bg-green-700 hocus:text-gray-200 focus:shadow-outline border-b-0
-`;
 
-export const LogoLink = styled(NavLink)`
-  ${tw`flex items-center font-black border-b-0 text-2xl! ml-0!`};
-  padding: 10px;
-  border-radius: 8px;
-  img {
-    ${tw`w-20 h-20 mr-3`}
-  }
-`;
 
-export const MobileNavLinksContainer = tw.nav`flex flex-1 items-center justify-between md:hidden`;
+
+
+
 export const NavToggle = tw.button`
   md:hidden z-20 focus:outline-none hocus:text-primary-500 transition duration-300
 `;
 
 export const MobileNavLinks = motion(styled.div`
   ${tw`md:hidden z-10 fixed top-0 inset-x-0 mx-4 my-6 p-8 border text-center rounded-lg text-black`}
-  background-color: black;
-  
+  background-color: white;
+
   ${NavLinks} {
     ${tw`flex flex-col items-center`}
+
+    ${NavLink} {
+      color: black !important;  // Force other links to stay black in the mobile view
+
+      &:nth-child(1) {
+        color: #0ed1b2 !important;  // Ensure the Home link remains #0ed1b2 (teal) in mobile view
+      }
+    }
   }
 `);
+
+
 
 const scrollToSection = (elementRef) => {
   window.scrollTo({
@@ -93,7 +122,6 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];
   const homeRef = useRef(null);
 
-  console.log(isScrolled);
   const defaultLogoLink = (
     <LogoLink href="/">
       <img src={logo} alt="logo" />

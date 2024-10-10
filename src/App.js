@@ -100,16 +100,12 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 // import TermsOfServicePage from "pages/TermsOfService.js";
 // import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
 
-import ComponentRenderer from "ComponentRenderer.js";
-
-import ThankYouPage from "ThankYouPage.js";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EventLandingPage from "demos/EventLandingPage";
-import TwoColWithButton from "components/features/TwoColWithButton";
-import Timeline from "components/headers/TimeLine";
-import Projects from "components/headers/TimeLine";
+
 import EquipmentCards from "components/headers/TimeLine";
+import Openings from "components/headers/openings";
 
 
 export default function App() {
@@ -125,6 +121,7 @@ export default function App() {
     
           <Route path="/" element={<EventLandingPage />} />
           <Route path="/equipments" element={ <EquipmentCards/>} />
+          <Route path="/openings" element={ <Openings/>} />
           {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
       </Router>

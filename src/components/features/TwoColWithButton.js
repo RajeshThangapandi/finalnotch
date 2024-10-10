@@ -12,24 +12,33 @@ import image2 from "../../images/2.png";
 import image3 from "../../images/3.png";
 import image4 from "../../images/4.png";
 
+const OuterContainer = styled.div`
+  ${tw`py-12`}
+  @media (max-width: 800px) {
+    ${tw`px-4`} // Adjust padding for medium screens
+  }
+  @media (max-width: 300px) {
+    ${tw`px-2`} // Further adjust padding for very small screens
+  }
+`;
 
-const OuterContainer = tw.div``; // Increased padding for OuterContainer
-const Container = tw.div`relative`;
-const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-24 md:py-24 items-center`; // Increased margins for TwoColumn
+const Container = tw.div`relative px-6`;
+const TwoColumn = tw.div`flex flex-col lg:flex-row justify-between max-w-screen-xl mx-auto items-center my-8 gap-y-12 lg:gap-x-16`;
+
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
 const ImageColumn = tw(Column)`md:w-6/12 flex-shrink-0 relative`;
-const TextColumn = styled(Column)(props => [
-  tw`md:w-6/12  md:mt-0`,
-  props.textOnLeft ? tw`md:mr-16 lg:mr-20 md:order-first` : tw`md:ml-16 lg:ml-20 md:order-last`
+const TextColumn = styled(Column)(({ textOnLeft }) => [
+  tw`md:w-6/12 md:mt-0`,
+  textOnLeft ? tw`md:mr-16 lg:mr-20 md:order-first` : tw`md:ml-16 lg:ml-20 md:order-last`
 ]);
 
-const Image = styled.img(props => [
-  tw`w-full h-64`,  
-  props.imageRounded && tw`rounded`,
-  props.imageBorder && tw`border`,
-  props.imageShadow && tw`shadow`,
-  `object-fit: cover;`,  
-  `object-position: center;`  
+const Image = styled.img(({ imageRounded, imageBorder, imageShadow }) => [
+  tw`w-full h-64`,
+  imageRounded && tw`rounded`,
+  imageBorder && tw`border`,
+  imageShadow && tw`shadow`,
+  `object-fit: cover;`,
+  `object-position: center;`
 ]);
 
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
@@ -37,15 +46,18 @@ const Subheading = styled(SubheadingBase)`
   color: #32c5d2;
   ${tw`text-center md:text-left`}
 `;
-const Heading = tw(SectionHeading)` font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+const Heading = tw(SectionHeading)`font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Description = styled.p`
   ${tw`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`}
   font-family: "Arial, sans-serif"; // Set the same font family as in "About Us"
+  @media (max-width: 300px) {
+    ${tw`text-xs`} // Smaller font size for very small screens
+  }
 `;
 
-const PrimaryButton = styled(PrimaryButtonBase)(props => [
+const PrimaryButton = styled(PrimaryButtonBase)(({ buttonRounded }) => [
   tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0`,
-  props.buttonRounded && tw`rounded-full`
+  buttonRounded && tw`rounded-full`
 ]);
 
 const CarouselContainer = styled(Slider)`
@@ -123,8 +135,6 @@ export default ({
   imageRounded = true,
   imageBorder = false,
   imageShadow = false,
-  imageDecoratorBlob = false,
-  imageDecoratorBlobCss = null,
   textOnLeft = true
 }) => {
   const carouselRef = useRef(null);
@@ -151,6 +161,17 @@ export default ({
     <OuterContainer>
       <Container>
         <TwoColumn>
+        
+          <TextColumn textOnLeft={textOnLeft}>
+            <TextContent>
+              <Subheading>{subheading}</Subheading>
+              <Heading>{heading}</Heading>
+              {description}
+              <PrimaryButton buttonRounded={buttonRounded} as="a" href={primaryButtonUrl}>
+                {primaryButtonText}
+              </PrimaryButton>
+            </TextContent>
+          </TextColumn>
           <ImageColumn>
             <CarouselContainer ref={carouselRef} {...carouselSettings}>
               {imageSrcs.map((src, index) => (
@@ -172,18 +193,8 @@ export default ({
               <ArrowForwardIcon />
             </ControlButton>
           </ImageColumn>
-          <TextColumn textOnLeft={textOnLeft}>
-            <TextContent>
-              <Subheading>{subheading}</Subheading>
-              <Heading>{heading}</Heading>
-              {description}
-              <PrimaryButton buttonRounded={buttonRounded} as="a" href={primaryButtonUrl}>
-                {primaryButtonText}
-              </PrimaryButton>
-            </TextContent>
-          </TextColumn>
         </TwoColumn>
       </Container>
     </OuterContainer>
   );
-}; 
+};

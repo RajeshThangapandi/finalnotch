@@ -44,7 +44,7 @@ export default () => {
             <LogoText>Notchindiaprojects Inc.</LogoText>
           </LogoContainer>
           <CompanyDescription>
-            Notchindiaprojects is an Internet Technology company providing design resources such as website templates and themes.
+          NotchIndiaProjects is a leading construction company specializing in high-quality residential, commercial, and industrial projects.
           </CompanyDescription>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
