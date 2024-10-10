@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import CanvasJSReact from '@canvasjs/react-charts';
+// import CanvasJSReact from '@canvasjs/react-charts';
 
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+// var CanvasJS = CanvasJSReact.CanvasJS;
+// var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class BarCharts extends Component {
 	render() {
@@ -41,7 +41,7 @@ class BarCharts extends Component {
 
 		return (
 			<div>
-				<CanvasJSChart options={options} />
+				{/* <CanvasJSChart options={options} /> */}
 			</div>
 		);
 	}
