@@ -1,50 +1,34 @@
-import React, { Component } from 'react';
-// import CanvasJSReact from '@canvasjs/react-charts';
+import React from 'react';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
 
-// var CanvasJS = CanvasJSReact.CanvasJS;
-// var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+// Sample data for the line chart with specified values
+const data = [
+  { name: '2021-2022', value: 100 },
+  { name: '2022-2023', value: 259 },
+  { name: '2023-2024', value: 455 },
+  { name: '2024-2025', value: 600 },
+];
 
-class BarCharts extends Component {
-	render() {
-		const options = {
-			animationEnabled: true,
-			animationDuration: 5000, // Animation duration of 3 seconds
-			theme: "light2",
-			title: {
-				text: "Growth of Photovoltaics"
-			},
-			axisX: {
-				interval: 1, // Set interval to 1 year
-				valueFormatString: "YYYY", // Format the label as a year
-				labelAngle: -45, // Rotate the labels for better readability
-				labelFormatter: function (e) {
-					return {
-						text: e.value.getFullYear() // Show only the year part
-					};
-				}
-			},
-			axisY: {
-				title: "Capacity (in MWp)",
-				logarithmic: true
-			},
-			data: [{
-				type: "spline",
-				showInLegend: true,
-				legendText: "MWp = one megawatt peak",
-				dataPoints: [
-					{ x: new Date(2001, 0), y: 1615 },
-					{ x: new Date(2002, 0), y: 2069 },
-					{ x: new Date(2003, 0), y: 2635 },
-				]
-			}]
-		}
+const BasicLineChart = () => {
+  return (
+    <ResponsiveContainer width="100%" height={400}>
+      <LineChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis domain={[0, 'dataMax + 100']} /> {/* Set Y-axis to start from 0 */}
+        <Tooltip />
+        <Line type="monotone" dataKey="value" stroke="#82ca9d" strokeWidth={3} />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+};
 
-		return (
-			<div>
-				{/* <CanvasJSChart options={options} /> */}
-			</div>
-		);
-	}
-}
-
-export default BarCharts;
+export default BasicLineChart;

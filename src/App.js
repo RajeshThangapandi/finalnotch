@@ -106,6 +106,7 @@ import EventLandingPage from "demos/EventLandingPage";
 
 import EquipmentCards from "components/headers/TimeLine";
 import Openings from "components/headers/openings";
+import ProjectDetails from "demos/ProjectDetails";
 
 
 export default function App() {
@@ -122,6 +123,7 @@ export default function App() {
           <Route path="/" element={<EventLandingPage />} />
           <Route path="/equipments" element={ <EquipmentCards/>} />
           <Route path="/openings" element={ <Openings/>} />
+          <Route path="/project/:projectId" element={<ProjectDetails/>} /> {/* Dynamic Route */}
           {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
       </Router>

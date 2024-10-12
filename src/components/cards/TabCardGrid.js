@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
-
+import "./TabGrid.css"
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { Container, ContentWithPaddingXl } from "../misc/Layouts.js";
 import { SectionHeading } from "../misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "../misc/Buttons.js";
-
+import { Link } from "react-router-dom"; // Import Link
 import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-5.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-7.svg";
 
@@ -26,13 +26,14 @@ const TabControl = styled.div`
 
 const TabContent = tw(motion.div)`mt-6 flex flex-wrap sm:-mr-10 md:-mr-6 lg:-mr-12`;
 const CardContainer = tw.div`mt-10 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 sm:pr-10 md:pr-6 lg:pr-12`;
-const Card = tw(motion.a)`bg-gray-200 rounded-b block max-w-xs mx-auto sm:max-w-none sm:mx-0`;
+const Card = tw(motion.a)`bg-gray-200 rounded-full block max-w-xs mx-auto sm:max-w-none sm:mx-0`;
 const CardImageContainer = styled.div`
   ${props => css`background-image: url("${props.imageSrc}");`}
-  ${tw`bg-center bg-cover relative rounded-t mx-auto`}
-  width: 144px; /* 36 * 4 = 144px */
-  height: 144px; /* 36 * 4 = 144px */
+  ${tw`bg-center bg-cover relative rounded-full mx-auto`}
+  width: 144px; /* Adjust these values as needed */
+  height: 144px;
 `;
+
 
 
 const CardHoverOverlay = styled(motion.div)`
@@ -43,9 +44,24 @@ const CardButton = tw(PrimaryButtonBase)`text-sm`;
 
 
 const CardText = tw.div`p-4 text-gray-900`;
-const CardTitle = tw.h5`text-lg font-semibold group-hover:text-primary-500`;
+const CardTitle = styled.h5`
+  ${tw`text-lg font-semibold group-hover:text-primary-500`};
+  font-size: clamp(0.8rem, 1.2vw, 1rem); /* Dynamically adjust font size */
+  max-width: 100%; /* Ensure it doesn't overflow */
+  text-align: center; /* Center the text */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis if text is too long */
+  padding-left: 10%; /* Left padding of 10% */
+  padding-right: 10%;
+`;
+
+
 const CardContent = tw.p`mt-1 text-sm font-medium text-gray-600`;
 const CardPrice = tw.p`mt-4 text-xl font-bold`;
+const CardImage = styled.img`
+  ${tw`w-full h-full object-cover rounded-full`} /* Changed to rounded-full for circle */
+`;
 
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none -z-20 absolute right-0 top-0 h-64 w-64 opacity-15 transform translate-x-2/3 -translate-y-12 text-pink-400`}
@@ -59,7 +75,7 @@ export default ({
   tabs = {
     Ongoing:[
       {
-        project_id: 5,
+        project_id: 1,
         imageSrc:
             "https://s3.ap-south-1.amazonaws.com/media.thesouthfirst.com/wp-content/uploads/2024/07/Tamil-Nadu-government-logo.jpg",
         title: "Construction of Vaigai River North Bank Road",
@@ -69,7 +85,7 @@ export default ({
         estimated_cost: "Rs. 54.60 Cr/- inc. GST"
       },
       {
-        project_id: 5,
+        project_id: 2,
         imageSrc:
             "https://media.licdn.com/dms/image/v2/D560BAQHOkdMus_fLpg/company-logo_200_200/company-logo_200_200/0/1709119399719/indinfravit_trust_logo?e=2147483647&v=beta&t=tKpV26mD71dqj58T2Mu4N3ZoNRBFMw0YzDmyYg3WlhU",
         title: "MMR Overlay Works at Simhapuri Expressway Ltd.",
@@ -79,7 +95,7 @@ export default ({
         estimated_cost: "Rs. 54.60 Cr/- inc. GST"
       },
       {
-        project_id: 5,
+        project_id: 3,
         imageSrc:
             "https://vajiram-prod.s3.ap-south-1.amazonaws.com/National_Highways_Authority_of_India_NHAI_2b16a244df.jpg",
         title: "Strengthening of two lanes with paved shoulder.",
@@ -89,7 +105,7 @@ export default ({
         estimated_cost: "Rs. 54.60 Cr/- inc. GST"
       },
       {
-        project_id: 5,
+        project_id: 4,
         imageSrc:
             "https://s3.ap-south-1.amazonaws.com/media.thesouthfirst.com/wp-content/uploads/2024/07/Tamil-Nadu-government-logo.jpg",
         title: "Construction of Grade Separator.",
@@ -104,7 +120,7 @@ export default ({
     ],
     Completed: [
       {
-        project_id: 7,
+        project_id: 5,
         imageSrc:
             "https://vajiram-prod.s3.ap-south-1.amazonaws.com/National_Highways_Authority_of_India_NHAI_2b16a244df.jpg",
         title: "Overlay and Repairs in the Stretch",
@@ -114,13 +130,14 @@ export default ({
         estimated_cost: "Rs. 59.89 Cr/-"
     },
       {
+        project_id: 6,
         imageSrc:
           "https://images.jdmagicbox.com/comp/kolkata/83/033p400883/catalogue/reliance-infrastructure-ltd-circus-avenue-kolkata-estate-agents-aimner8zst-250.jpg",
         title: "Construction of Widening of Two Lane to Four Lane bypasses",
         client: "Reliance Infrastructure Limited",
         content: "Reliance Infrastructure Limited BOT Concessionaire Supervision of PD NHAI, PIU – Salem",
     },{
-      project_id: 5,
+      project_id: 7,
       imageSrc:
           "https://vajiram-prod.s3.ap-south-1.amazonaws.com/National_Highways_Authority_of_India_NHAI_2b16a244df.jpg",
       title: "Periodic maintenance along the Namakkal - Karur Toll Road",
@@ -147,7 +164,7 @@ export default ({
   ],
     Signature:  [
       {
-          project_id: 1,
+          project_id: 9,
           imageSrc:"https://s3.ap-south-1.amazonaws.com/media.thesouthfirst.com/wp-content/uploads/2024/07/Tamil-Nadu-government-logo.jpg",
           title: "Widening from Two Lane to Four Lane and Improvements",
           location: "Tambaram - Mudichur - Sriperumbudur Road",
@@ -156,7 +173,7 @@ export default ({
           content: "Rs. 95 Cr/- inc. GST"
       },
       {
-          project_id: 2,
+          project_id: 10,
           imageSrc:
           "https://images.jdmagicbox.com/comp/kolkata/83/033p400883/catalogue/reliance-infrastructure-ltd-circus-avenue-kolkata-estate-agents-aimner8zst-250.jpg",
           title: "Construction of Widening of Two Lane to Four Lane bypasses",
@@ -166,7 +183,7 @@ export default ({
          content: "Rs. 254.78 Cr/- inc. GST"
       },
       {
-          project_id: 3,
+          project_id: 11,
           imageSrc:"https://i0.wp.com/complainthub.org/wp-content/uploads/2024/03/Corporation-of-Madurai-Logo.png?fit=720%2C480&ssl=1",
           title: "Renewal proposal for Nagapattinam – Gudalur – Mysore Road",
           location: "NH 67 (New No: 83)",
@@ -174,7 +191,7 @@ export default ({
           content: "Rs. 98 Cr/- inc. GST"
       },
       {
-          project_id: 4,
+          project_id: 12,
           imageSrc:
           "https://images.jdmagicbox.com/comp/kolkata/83/033p400883/catalogue/reliance-infrastructure-ltd-circus-avenue-kolkata-estate-agents-aimner8zst-250.jpg",
           title: "Periodic maintenance along the Trichy Karur Toll Road",
@@ -230,29 +247,17 @@ export default ({
             {tabs[tabKey].map((card, index) => (
               <CardContainer key={index}>
                 <Card className="group" href={card.url} initial="rest" whileHover="hover" animate="rest">
-                  <CardImageContainer imageSrc={card.imageSrc}>
-                   
-                    <CardHoverOverlay
-                      variants={{
-                        hover: {
-                          opacity: 1,
-                          height: "auto"
-                        },
-                        rest: {
-                          opacity: 0,
-                          height: 0
-                        }
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <CardButton>{card.client}</CardButton>
-                    </CardHoverOverlay>
-                  </CardImageContainer>
+                  <div className="img1">
+                    <CardImage src={card.imageSrc}/>
+                    <Link to={`/project/${card.project_id}`} className="more">MORE</Link>
+                  </div>  
+
                   <CardText>
                     <CardTitle>{card.title}</CardTitle>
-                    <CardContent>{card.content}</CardContent>
-                    <CardPrice>{card.price}</CardPrice>
+                    {/* <CardContent>{card.content}</CardContent>
+                    <CardPrice>{card.price}</CardPrice> */}
                   </CardText>
+                 
                 </Card>
               </CardContainer>
             ))}

@@ -1,0 +1,185 @@
+/* Fixed Box Container */
+#fixed-box {
+    background: #FFF;
+    padding: 20px;
+    width: 100%;
+    color: #47535a;
+    font-size: 14px;
+    line-height: 24px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Divisions without Rounded Corners and Dark Shadow */
+.divisions {
+    float: left;
+    margin: 0 30px 30px 0;
+    width: 275px;
+    text-align: center;
+    font-size: 13px;
+    border: none; /* No border */
+    border-radius: 0px; /* Removed rounded corners */
+    padding: 50px;
+    box-sizing: border-box;
+    line-height: 18px;
+    transition: all 0.5s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reduced shadow for subtle effect */
+    background-color: white;
+    height: 100%; /* Dynamic height based on content */
+}
+
+/* Divisions Hover Effect */
+.divisions:hover {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow on hover */
+}
+
+/* Responsive Images */
+.img1 {
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    border-radius: 50%; /* Makes it a circle */
+    margin: 0 auto; /* Center it horizontally */
+    width: 144px; /* Fixed width */
+    height: 144px; /* Fixed height */
+    overflow: hidden; 
+}
+.img1 img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease;
+    object-fit: cover;
+    /* No rounded corners */
+}
+
+/* More Button Styling */
+.img1 a {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 22px;
+    box-sizing: border-box;
+    font-family: 'Gilroy-ExtraBold';
+    color: #FFF;
+    position: absolute;
+    left: -74px;
+    top: 50%;
+    background: rgba(0, 0, 0, 0.8);
+    transition: all 0.5s ease;
+    transform: translateY(-50%) rotate(100deg);
+}
+
+.group:hover .img1 a {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background: #00354f;
+}
+
+/* Image Hover Effect */
+.divisions:hover .division-img img {
+    opacity: 0.8;
+    transform: scale(1.1);
+    border-radius: 0px; /* No rounded corners */
+}
+
+/* Division Title Styling */
+.titletest {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 30px;
+    color: #333;
+    text-align: left; /* Align title to the left */
+    width: 100%; /* Ensure title spans the full width */
+    display: block; /* Ensure it takes up full width of container */
+    margin: 30px 0 10px 0; /* Adjust margin */
+}
+
+h5 {
+    display: block;
+    font-size: 0.83em;
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+.titletest:hover {
+    color: #00354f;
+}
+
+/* Hover Effect for Links */
+.division-title h4 a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.division-title h4 a:hover {
+    color: #d48f00;
+}
+
+/* Responsive Design for different screen sizes */
+
+/* For tablets and larger phones (width up to 992px) */
+@media (max-width: 992px) {
+    .divisions {
+        width: 348px;
+    }
+
+    .division-img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .divisions {
+        height: auto;
+    }
+}
+
+/* For smaller screens (width up to 768px) */
+@media (max-width: 768px) {
+    .divisions {
+        width: 100%;
+        margin: 0 0 20px 0;
+        float: none;
+    }
+
+    .division-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .division-img img {
+        width: auto;
+        height: 100%;
+    }
+}
+
+/* For extra small screens (width up to 576px) */
+@media (max-width: 576px) {
+    .divisions {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .division-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .division-img img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    .division-img a {
+        padding: 15px 10px;
+        font-size: 12px;
+    }
+}
