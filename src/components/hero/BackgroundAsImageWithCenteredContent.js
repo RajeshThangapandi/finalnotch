@@ -3,10 +3,12 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import Header, { NavLink, NavLinks } from "../headers/light.js";
-import img1 from "../../images/img1.jpg";
-import img2 from "../../images/img2.jpg";
-import img3 from "../../images/img3.jpg";
+import img1 from "../../images/home2.JPG";
+import img2 from "../../images/home3.JPG";
+import img3 from "../../images/home4.JPG";
+import img4 from "../../images/home1.jpg";
 import { useNavigate } from 'react-router-dom'; 
+
 
 // Styled Header without any background and higher z-index
 const StyledHeader = styled(Header)`
@@ -22,7 +24,7 @@ const StyledHeader = styled(Header)`
 `;
 
 // Opacity overlay on the image
-const OpacityOverlay = tw.div`absolute inset-0 bg-black opacity-50 z-10`;
+// const OpacityOverlay = tw.div`absolute inset-0 bg-black opacity-50 z-10`;
 
 // Icon Container for the navigation arrows
 const IconContainer = styled.div`
@@ -87,6 +89,13 @@ const images = [
     topic: "Topic 3",
     description: "Description for image 3.",
   },
+  {
+    src: img4,
+    author: "Author 3",
+    title: "Title 3",
+    topic: "Topic 3",
+    description: "Description for image 3.",
+  }
 ];
 
 const FullWidthCarousel = ({ refs }) => {
@@ -188,7 +197,7 @@ const FullWidthCarousel = ({ refs }) => {
                     transition: "opacity 0.5s ease-in-out", // Smooth transition for images
                   }}
                 />
-                <OpacityOverlay />
+                {/* <OpacityOverlay /> */}
               </div>
             ))}
           </div>

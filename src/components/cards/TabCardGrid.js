@@ -208,66 +208,63 @@ export default ({
    * as the key and value of the key will be its content (as an array of objects).
    * To see what attributes are configurable of each object inside this array see the example above for "Starters".
    */
-  const tabsKeys = Object.keys(tabs);
-  const [activeTab, setActiveTab] = useState(tabsKeys[0]);
+  const tabsKeys = ["Completed", "Signature", "Ongoing"]; // Define the order here
+const [activeTab, setActiveTab] = useState(tabsKeys[0]); 
 
-  return (
-    <Container>
-      <ContentWithPaddingXl>
-        <HeaderRow>
-          <Header>{heading}</Header>
-          <TabsControl>
-            {Object.keys(tabs).map((tabName, index) => (
-              <TabControl key={index} active={activeTab === tabName} onClick={() => setActiveTab(tabName)}>
-                {tabName}
-              </TabControl>
-            ))}
-          </TabsControl>
-        </HeaderRow>
+return (
+  <Container>
+    <ContentWithPaddingXl>
+      <HeaderRow>
+        <Header>{heading}</Header>
+        <TabsControl>
+          {tabsKeys.map((tabName, index) => (
+            <TabControl key={index} active={activeTab === tabName} onClick={() => setActiveTab(tabName)}>
+              {tabName}
+            </TabControl>
+          ))}
+        </TabsControl>
+      </HeaderRow>
 
-        {tabsKeys.map((tabKey, index) => (
-          <TabContent
-            key={index}
-            variants={{
-              current: {
-                opacity: 1,
-                scale:1,
-                display: "flex",
-              },
-              hidden: {
-                opacity: 0,
-                scale:0.8,
-                display: "none",
-              }
-            }}
-            transition={{ duration: 0.4 }}
-            initial={activeTab === tabKey ? "current" : "hidden"}
-            animate={activeTab === tabKey ? "current" : "hidden"}
-          >
-            {tabs[tabKey].map((card, index) => (
-              <CardContainer key={index}>
-                <Card className="group" href={card.url} initial="rest" whileHover="hover" animate="rest">
-                  <div className="img1">
-                    <CardImage src={card.imageSrc}/>
-                    <Link to={`/project/${card.project_id}`} className="more">MORE</Link>
-                  </div>  
+      {tabsKeys.map((tabKey, index) => (
+        <TabContent
+          key={index}
+          variants={{
+            current: {
+              opacity: 1,
+              scale: 1,
+              display: "flex",
+            },
+            hidden: {
+              opacity: 0,
+              scale: 0.8,
+              display: "none",
+            },
+          }}
+          transition={{ duration: 0.4 }}
+          initial={activeTab === tabKey ? "current" : "hidden"}
+          animate={activeTab === tabKey ? "current" : "hidden"}
+        >
+          {tabs[tabKey].map((card, index) => (
+            <CardContainer key={index}>
+              <Card className="group" href={card.url} initial="rest" whileHover="hover" animate="rest">
+                <div className="img1">
+                  <CardImage src={card.imageSrc} />
+                  <Link to={`/project/${card.project_id}`} className="more">MORE</Link>
+                </div>
 
-                  <CardText>
-                    <CardTitle>{card.title}</CardTitle>
-                    {/* <CardContent>{card.content}</CardContent>
-                    <CardPrice>{card.price}</CardPrice> */}
-                  </CardText>
-                 
-                </Card>
-              </CardContainer>
-            ))}
-          </TabContent>
-        ))}
-      </ContentWithPaddingXl>
-      <DecoratorBlob1 />
-      <DecoratorBlob2 />
-    </Container>
-  );
+                <CardText>
+                  <CardTitle>{card.title}</CardTitle>
+                </CardText>
+              </Card>
+            </CardContainer>
+          ))}
+        </TabContent>
+      ))}
+    </ContentWithPaddingXl>
+    <DecoratorBlob1 />
+    <DecoratorBlob2 />
+  </Container>
+);
 };
 
 

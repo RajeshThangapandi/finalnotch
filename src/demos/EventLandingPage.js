@@ -71,7 +71,7 @@ const MainComponent = () => {
             </div>
 
             <FounderVisionSection />
-            <SequentialAnimatedBarChart />
+            {/* <SequentialAnimatedBarChart /> */}
             <div ref={projectRef}>
               <TabCardGrid heading="Our Projects" />
             </div>
