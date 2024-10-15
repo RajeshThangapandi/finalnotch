@@ -173,33 +173,34 @@ const FullWidthCarousel = ({ refs }) => {
       <div id="carousel-section" style={{ height: "50vh", overflow: "hidden", marginTop: "80px" }}>
         <div className="carousel" style={{ height: "100%", width: "100%", position: "relative" }}>
           <div className="list" style={{ height: "100%" }}>
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className={`item ${index === currentIndex ? 'active' : ''}`}
-                style={{
-                  zIndex: index === currentIndex ? 1 : 0,
-                  height: "100%",
-                  width: "100%",
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                }}
-              >
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",  // Ensures the image covers the area
-                    objectPosition: "center", // Centers the image
-                    transition: "opacity 0.5s ease-in-out", // Smooth transition for images
-                  }}
-                />
-                {/* <OpacityOverlay /> */}
-              </div>
-            ))}
+          {images.map((image, index) => (
+  <div
+    key={index}
+    className={`item ${index === currentIndex ? 'active' : ''}`}
+    style={{
+      zIndex: index === currentIndex ? 1 : 0,
+      height: "100%",
+      width: "100%",
+      position: "absolute",
+      top: 0,
+      left: 0,
+    }}
+  >
+    <img
+      src={image.src}
+      alt={image.title}
+      loading="lazy"  // Lazy loading attribute
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        objectPosition: "center",
+        transition: "opacity 0.5s ease-in-out",
+      }}
+    />
+  </div>
+))}
+
           </div>
   
           <IconContainer>
