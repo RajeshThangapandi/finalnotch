@@ -1,17 +1,44 @@
-import React, { useRef } from "react";
+import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
-import Slider from "react-slick";
-import { SectionHeading, Subheading as SubheadingBase } from "../../components/misc/Headings.js";
-import { PrimaryButton as PrimaryButtonBase } from "../../components/misc/Buttons.js";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import image1 from "../../images/about4.JPG";
 import image2 from "../../images/about2.JPG";
 import image3 from "../../images/about3.JPG";
 import image4 from "../../images/about1.JPG";
 
+import { SectionHeading, Subheading as SubheadingBase } from "../../components/misc/Headings.js";
+import { PrimaryButton as PrimaryButtonBase } from "../../components/misc/Buttons.js";
+
+// Your existing styled-components (Subheading, Heading, PrimaryButton)
+const Subheading = styled(SubheadingBase)`
+  color: #32c5d2;
+  ${tw`text-center md:text-left`}
+`;
+const Heading = tw(SectionHeading)`font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+const PrimaryButton = styled(PrimaryButtonBase)(({ buttonRounded }) => [
+  tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0`,
+  buttonRounded && tw`rounded-full`
+]);
+
+// Description component
+const Description = styled.p`
+  ${tw`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`}
+  font-family: "Arial, sans-serif"; // Set the same font family as in "About Us"
+  @media (max-width: 300px) {
+    ${tw`text-xs`} // Smaller font size for very small screens
+  }
+`;
+
+// Outer container styled component
 const OuterContainer = styled.div`
   ${tw`py-12`}
   @media (max-width: 800px) {
@@ -22,6 +49,7 @@ const OuterContainer = styled.div`
   }
 `;
 
+// Main layout styled components
 const Container = tw.div`relative px-6`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row justify-between max-w-screen-xl mx-auto items-center my-8 gap-y-12 lg:gap-x-16`;
 
@@ -32,8 +60,9 @@ const TextColumn = styled(Column)(({ textOnLeft }) => [
   textOnLeft ? tw`md:mr-16 lg:mr-20 md:order-first` : tw`md:ml-16 lg:ml-20 md:order-last`
 ]);
 
+// Updated Image component with increased height
 const Image = styled.img(({ imageRounded, imageBorder, imageShadow }) => [
-  tw`w-full h-64`,
+  tw`w-full h-96`, // Increased height to h-96
   imageRounded && tw`rounded`,
   imageBorder && tw`border`,
   imageShadow && tw`shadow`,
@@ -42,44 +71,8 @@ const Image = styled.img(({ imageRounded, imageBorder, imageShadow }) => [
 ]);
 
 const TextContent = tw.div`lg:py-8 text-center md:text-left`;
-const Subheading = styled(SubheadingBase)`
-  color: #32c5d2;
-  ${tw`text-center md:text-left`}
-`;
-const Heading = tw(SectionHeading)`font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
-const Description = styled.p`
-  ${tw`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`}
-  font-family: "Arial, sans-serif"; // Set the same font family as in "About Us"
-  @media (max-width: 300px) {
-    ${tw`text-xs`} // Smaller font size for very small screens
-  }
-`;
 
-const PrimaryButton = styled(PrimaryButtonBase)(({ buttonRounded }) => [
-  tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0`,
-  buttonRounded && tw`rounded-full`
-]);
-
-const CarouselContainer = styled(Slider)`
-  ${tw`w-full`};
-
-  .slick-slide {
-    padding: 0 10px;
-  }
-
-  .slick-list {
-    margin: 0 -10px;
-  }
-
-  .slick-dots {
-    bottom: -35px;
-  }
-
-  img {
-    ${tw`w-full h-auto`}
-  }
-`;
-
+// Control button styled component
 const ControlButton = styled.button`
   ${tw`absolute top-1/2 transform -translate-y-1/2 bg-white text-primary-500 rounded-full p-3 shadow-lg transition-all duration-300`}
   z-index: 10;
@@ -103,6 +96,7 @@ const ControlButton = styled.button`
   }
 `;
 
+// Main component export
 export default ({
   subheading = "Our Expertise",
   heading = (
@@ -125,43 +119,17 @@ export default ({
   ),
   primaryButtonText = "Contact Us",
   primaryButtonUrl = "https://timerse.com",
-  imageSrcs = [
-    image1,
-    image2,
-    image3,
-    image4
-  ],
+  imageSrcs = [image1, image2, image3, image4],
   buttonRounded = true,
   imageRounded = true,
   imageBorder = false,
   imageShadow = false,
   textOnLeft = true
 }) => {
-  const carouselRef = useRef(null);
-
-  const carouselSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-  };
-
-  const nextSlide = () => {
-    carouselRef.current.slickNext();
-  };
-
-  const prevSlide = () => {
-    carouselRef.current.slickPrev();
-  };
-
   return (
     <OuterContainer>
       <Container>
         <TwoColumn>
-        
           <TextColumn textOnLeft={textOnLeft}>
             <TextContent>
               <Subheading>{subheading}</Subheading>
@@ -172,25 +140,37 @@ export default ({
               </PrimaryButton>
             </TextContent>
           </TextColumn>
+
           <ImageColumn>
-            <CarouselContainer ref={carouselRef} {...carouselSettings}>
+            <Swiper
+              modules={[Navigation, Pagination]} // Only import Navigation and Pagination
+              navigation={{
+                prevEl: ".left",
+                nextEl: ".right",
+              }}
+              pagination={{ clickable: true }}
+              spaceBetween={20}
+              slidesPerView={1}
+              loop={true}
+            >
               {imageSrcs.map((src, index) => (
-                <Image
-                  key={index}
-                  src={src}
-                  alt={`Carousel Image ${index + 1}`}
-                  imageBorder={imageBorder}
-                  imageShadow={imageShadow}
-                  imageRounded={imageRounded}
-                />
+                <SwiperSlide key={index}>
+                  <Image
+                    src={src} // Directly set the src attribute for immediate loading
+                    alt={`Carousel Image ${index + 1}`}
+                    imageBorder={imageBorder}
+                    imageShadow={imageShadow}
+                    imageRounded={imageRounded}
+                  />
+                </SwiperSlide>
               ))}
-            </CarouselContainer>
-            
-            <ControlButton className="left" onClick={prevSlide}>
-              <ArrowBackIcon />
+            </Swiper>
+
+            <ControlButton className="left">
+              <ChevronLeftIcon />
             </ControlButton>
-            <ControlButton className="right" onClick={nextSlide}>
-              <ArrowForwardIcon />
+            <ControlButton className="right">
+              <ChevronRightIcon />
             </ControlButton>
           </ImageColumn>
         </TwoColumn>
