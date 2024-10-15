@@ -7,10 +7,10 @@ import { PrimaryButton as PrimaryButtonBase } from "../../components/misc/Button
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-import image1 from "../../images/1.png";
-import image2 from "../../images/2.png";
-import image3 from "../../images/3.png";
-import image4 from "../../images/4.png";
+import image1 from "../../images/about4.JPG";
+import image2 from "../../images/about2.JPG";
+import image3 from "../../images/about3.JPG";
+import image4 from "../../images/about1.JPG";
 
 const OuterContainer = styled.div`
   ${tw`py-12`}
