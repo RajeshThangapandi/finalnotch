@@ -4,6 +4,8 @@ import SimpleSubscribeNewsletter from "components/forms/SimpleSubscribeNewslette
 import SequentialAnimatedBarChart from "components/headers/BarChart";
 import FounderVisionSection from "components/headers/Founder";
 import Loader from "./Loader"; // Import your Loader component
+import Testing from "./Testing";
+import TestingCard from "./Testing";
 
 // Lazy load non-critical components
 const AnimationRevealPage = lazy(() => import("helpers/AnimationRevealPage"));
@@ -48,7 +50,9 @@ const MainComponent = () => {
       {loading ? (
         <Loader onLoadComplete={() => setLoading(false)} /> // Pass the function to Loader
       ) : (
+    
         <Suspense fallback={<Loader onLoadComplete={() => setLoading(false)} />}>
+
           <AnimationRevealPage>
             {/* Theme Toggle Button */}
             <div style={{ position: 'fixed', top: '10px', right: '20px', zIndex: '50' }}>
@@ -61,6 +65,7 @@ const MainComponent = () => {
               </button>
             </div>
 
+           
             <div ref={homeRef}>
               <Hero refs={{ homeRef, projectRef, EqpRef, ContactRef, CareerRef, TeamRef }} theme={theme} /> 
             </div>

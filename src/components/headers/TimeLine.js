@@ -1,84 +1,98 @@
-import * as React from 'react';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
-import tw from "twin.macro";
+import React from 'react';
+import "./TimeLine.css";
 
-const equipmentData = [
-  {
-    title: "Apollo Hot Mix Plant",
-    image: "https://5.imimg.com/data5/SELLER/Default/2021/5/TV/ZF/JL/8809730/apollo-hot-mix-plant-500x500.jpeg",
-    description: "A high-performance hot mix plant for efficient asphalt production.",
-  },
-  {
-    title: "Wirtgen - Milling Machine",
-    image: "https://5.imimg.com/data5/SELLER/Default/2022/6/GJ/TO/NU/34635285/w-115-c5-cold-milling-machine-500x500.JPG",
-    description: "Ideal for cold milling of asphalt and concrete surfaces.",
-  },
-  {
-    title: "Vogele",
-    image: "https://5.imimg.com/data5/SELLER/Default/2022/11/PK/MP/PB/18537456/vogele-super-1800-track-sensor-paver-multiplex-rental-service-500x500.jpg",
-    description: "Advanced paver for precise road construction.",
-  },
-  {
-    title: "Apollo Hydrostatic Sensor Paver Finisher",
-    image: "https://5.imimg.com/data5/WL/AI/MY-8995763/sensor-paver-500x500.jpeg",
-    description: "Hydrostatic paver finisher for optimal material placement.",
-  },
-  {
-    title: "Komatsu Motor Grader",
-    image: "https://img.equipmentworld.com/files/base/randallreilly/all/image/2024/01/Komatsu_GD955_7_motor_grader_AZPG_93_.65a81230ed859.png?auto=format%2Ccompress&dpr=2&q=70&rect=0%2C347%2C6720%2C3780&w=400",
-    description: "Precision grading for road and site preparation.",
-  },
-  {
-    title: "Mechanical Broomer",
-    image: "http://www.adityaind.in/wp-content/uploads/2019/06/6-2.jpg",
-    description: "Efficient sweeping and cleaning of roads.",
-  },
-];
-const Title = tw.h1`text-4xl font-bold text-center mb-8`;
-const EquipmentCards = () => {
+
+
+const TestingCard = () => {
+  const imageStyle = {
+    width: '60%', // Adjust the width as needed
+    height: 'auto',
+    objectFit: 'cover',
+    margin: '0 auto', // Center the image horizontally
+  };
   return (
-    <Container maxWidth="lg" sx={{ padding: '2rem' }}>
-         <Title>Construction Site Equipment</Title>
-      <Grid container spacing={2} justifyContent="center">
-        {equipmentData.map((equipment, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card sx={{ maxWidth: 345, margin: 'auto' }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={equipment.image}
-                  alt={equipment.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {equipment.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {equipment.description}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-              </CardActionArea>
-
-            </Card>
-
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <section className="establishments-section establishments-section-desktop">
+      <div className="establishments-container">
+        <div className="establish-projects-heading">
+          <h1>Construction Equipment</h1>
+        </div>
+        <div className="establish-projects-flex">
+          <div className="establish-projects active" data-bg="https://images.unsplash.com/photo-1495036019936-220b29b930ea?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <div className="establish-project">
+              <div>
+                <p>Excavator</p>
+              </div>
+              <img style={imageStyle} className="bg-project" src="https://images.unsplash.com/photo-1495036019936-220b29b930ea?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Excavator" />
+            </div>
+            <img  style={imageStyle} src="https://images.unsplash.com/photo-1495036019936-220b29b930ea?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Excavator" />
+          </div>
+          <div className="establish-projects" data-bg="https://images.unsplash.com/photo-1728435195819-3083655add92?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <div className="establish-project">
+              <div>
+                <p>Bulldozer</p>
+              </div>
+              <img className="bg-project" src="https://images.unsplash.com/photo-1728435195819-3083655add92?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bulldozer" />
+            </div>
+            <img style={imageStyle} src="https://images.unsplash.com/photo-1728435195819-3083655add92?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bulldozer" />
+          </div>
+          <div className="establish-projects" data-bg="https://plus.unsplash.com/premium_photo-1661963927439-26e74bee3674?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <div className="establish-project">
+              <div>
+                <p>Crane</p>
+              </div>
+              <img className="bg-project" src="https://plus.unsplash.com/premium_photo-1661963927439-26e74bee3674?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Crane" />
+            </div>
+            <img style={imageStyle} src="https://plus.unsplash.com/premium_photo-1661963927439-26e74bee3674?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Crane" />
+          </div>
+          <div className="establish-projects" data-bg="https://images.unsplash.com/photo-1718470822407-f347f8a17798?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <div className="establish-project">
+              <div>
+                <p>Forklift</p>
+              </div>
+              <img className="bg-project" src="https://images.unsplash.com/photo-1718470822407-f347f8a17798?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Forklift" />
+            </div>
+            <img style={imageStyle} src="https://images.unsplash.com/photo-1718470822407-f347f8a17798?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Forklift" />
+          </div>
+          <div className="establish-projects" data-bg="https://images.unsplash.com/photo-1690719744562-249937b9c03a?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <div className="establish-project">
+              <div>
+                <p>Concrete Mixer</p>
+              </div>
+              <img className="bg-project" src="https://images.unsplash.com/photo-1690719744562-249937b9c03a?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Concrete Mixer" />
+            </div>
+            <img style={imageStyle} src="https://images.unsplash.com/photo-1690719744562-249937b9c03a?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Concrete Mixer" />
+          </div>
+          <div className="establish-projects" data-bg="https://plus.unsplash.com/premium_photo-1677682546110-2880cad3cb43?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <div className="establish-project">
+              <div>
+                <p>Paver</p>
+              </div>
+              <img className="bg-project" src="https://plus.unsplash.com/premium_photo-1677682546110-2880cad3cb43?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Paver" />
+            </div>
+            <img style={imageStyle} src="https://plus.unsplash.com/premium_photo-1677682546110-2880cad3cb43?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Paver" />
+          </div>
+          <div className="establish-projects last-child" data-bg="https://images.unsplash.com/photo-1646427154221-a4b57a921906?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <div className="establish-project">
+              <div>
+                <p>Backhoe Loader</p>
+              </div>
+              <img className="bg-project" src="https://images.unsplash.com/photo-1646427154221-a4b57a921906?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Backhoe Loader" />
+            </div>
+            <img  style={imageStyle} src="https://images.unsplash.com/photo-1646427154221-a4b57a921906?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Backhoe Loader" />
+          </div>
+          <div className="establish-projects last-child" data-bg="https://images.unsplash.com/photo-1640723559855-c27b649ad231?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+            <div className="establish-project">
+              <div>
+                <p>Road Roller</p>
+              </div>
+              <img className="bg-project" src="https://images.unsplash.com/photo-1640723559855-c27b649ad231?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Road Roller" />
+            </div>
+            <img style={imageStyle} src="https://images.unsplash.com/photo-1640723559855-c27b649ad231?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Road Roller" />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
-export default EquipmentCards;
+export default TestingCard;
