@@ -30,8 +30,8 @@ const Card = tw(motion.a)`bg-gray-200 rounded-full block max-w-xs mx-auto sm:max
 const CardImageContainer = styled.div`
   ${props => css`background-image: url("${props.imageSrc}");`}
   ${tw`bg-center bg-cover relative rounded-full mx-auto`}
-  width: 144px; /* Adjust these values as needed */
-  height: 144px;
+  width: 200px; /* Increased size */
+  height: 200px; /* Increased size */
 `;
 
 
@@ -60,8 +60,9 @@ const CardTitle = styled.h5`
 const CardContent = tw.p`mt-1 text-sm font-medium text-gray-600`;
 const CardPrice = tw.p`mt-4 text-xl font-bold`;
 const CardImage = styled.img`
-  ${tw`w-full h-full object-cover rounded-full`} /* Changed to rounded-full for circle */
+  ${tw`w-full h-full object-cover rounded-full`} /* Keeping the circular shape */
 `;
+
 
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none -z-20 absolute right-0 top-0 h-64 w-64 opacity-15 transform translate-x-2/3 -translate-y-12 text-pink-400`}
@@ -246,7 +247,7 @@ return (
         >
           {tabs[tabKey].map((card, index) => (
             <CardContainer key={index}>
-              <Card className="group" href={card.url} initial="rest" whileHover="hover" animate="rest">
+              <div className="group" href={card.url} initial="rest" whileHover="hover" animate="rest">
                 <div className="img1">
                   <CardImage src={card.imageSrc} />
                   <Link to={`/project/${card.project_id}`} className="more">MORE</Link>
@@ -255,7 +256,7 @@ return (
                 <CardText>
                   <CardTitle>{card.title}</CardTitle>
                 </CardText>
-              </Card>
+              </div>
             </CardContainer>
           ))}
         </TabContent>
