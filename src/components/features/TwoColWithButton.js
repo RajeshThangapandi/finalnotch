@@ -40,7 +40,7 @@ const Description = styled.p`
 
 // Outer container styled component
 const OuterContainer = styled.div`
-  ${tw`py-12`}
+  ${tw`py-12 relative`}
   @media (max-width: 800px) {
     ${tw`px-4`} // Adjust padding for medium screens
   }
@@ -96,8 +96,17 @@ const ControlButton = styled.button`
   }
 `;
 
-// Main component export
-export default ({
+// Circle SVG component
+const CircleBackground = styled.svg`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; // Make sure it is behind the content
+`;
+
+const MainComponent = ({
   subheading = "Our Expertise",
   heading = (
     <>
@@ -128,6 +137,19 @@ export default ({
 }) => {
   return (
     <OuterContainer>
+      <CircleBackground>
+        {[...Array(10)].map((_, index) => (
+          <circle
+            key={index}
+            cx={`${Math.random() * 100}vw`} // Random horizontal position
+            cy={`${Math.random() * 100}vh`} // Random vertical position
+            r="50" // Fixed radius for round circles
+            fill={`hsl(${Math.random() * 360}, 70%, 50%)`} // Random color
+            style={{ opacity: 0.1 }} // Opacity for circles
+          />
+        ))}
+      </CircleBackground>
+
       <Container>
         <TwoColumn>
           <TextColumn textOnLeft={textOnLeft}>
@@ -178,3 +200,5 @@ export default ({
     </OuterContainer>
   );
 };
+
+export default MainComponent;

@@ -14,6 +14,14 @@ const Heading = tw(SectionHeading)``
 const Subheading = tw(SubheadingBase)`text-center mb-3`
 const Description = tw(SectionDescription)`mx-auto text-center`
 
+const CircleBackground = styled.svg`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; // Make sure it is behind the content
+`;
 const Cards = tw.div`flex flex-wrap flex-row justify-center sm:max-w-2xl lg:max-w-5xl mx-auto`
 const Card = tw.div`mt-24 w-full sm:w-1/2 lg:w-1/3 flex flex-col items-center`
 const CardImage = styled.div`
@@ -47,8 +55,8 @@ export default ({
   cards = [
     {
       imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJIwASCJpICHRbFDOQXQ2S-pmikc8vs6K2GA&s",
-      position: "Founder",
-      name: "Adam Cuppy",
+      position: "Project Manager",
+      name: "VIMALATHITHAN S",
       links: [
         {
           url: "https://twitter.com",
@@ -66,8 +74,8 @@ export default ({
     },
     {
       imageSrc: "https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671122.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1727308800&semt=ais_hybrid",
-      position: "Sr. Designer",
-      name: "Charlotte Hale",
+      position: "Project Manager",
+      name: "SIVAPERUMAL A",
       links: [
         {
           url: "https://twitter.com",
@@ -85,8 +93,8 @@ export default ({
     },
     {
       imageSrc: "https://img.freepik.com/free-psd/3d-illustration-person-with-glasses_23-2149436190.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1727308800&semt=ais_hybrid",
-      position: "Jr. Designer",
-      name: "Silvester Wize",
+      position: "Project Manager",
+      name: "RAJAVEL M",
       links: [
         {
           url: "https://twitter.com",
@@ -104,8 +112,8 @@ export default ({
     },
     {
       imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjA2CIxDijGpPGTE_CVqFk1PEFOh9zq_2AI_vX-0L6qaEPqvARomVuYOZbpgss9ak7Rvk&usqp=CAU",
-      position: "Lead Developer",
-      name: "Himali Turn",
+      position: "Project Manager",
+      name: "PRAKASH KANNAN",
       links: [
         {
           url: "https://twitter.com",
@@ -123,8 +131,8 @@ export default ({
     },
     {
       imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLljN7sbq1RgM_oT85l-VSYiMZ2C_zzkLkjZ4gIV7ivI-Miu5dnZLTFQQRN2pDL0ojYpQ&usqp=CAU",
-      position: "Sr. Developer",
-      name: "Troye Sivan",
+      position: "Project Manager",
+      name: "ARJUNA PANDI V",
       links: [
         {
           url: "https://twitter.com",
@@ -142,8 +150,8 @@ export default ({
     },
     {
       imageSrc: "https://img.freepik.com/premium-psd/3d-character-young-man-with-suit-short-hair_792170-61.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1726704000&semt=ais_hybrid",
-      position: "Quality Assurance",
-      name: "Holo Wo",
+      position: "Project Manager",
+      name: "PRABU M",
       links: [
         {
           url: "https://twitter.com",
@@ -163,6 +171,18 @@ export default ({
 }) => {
   return (
     <Container>
+      <CircleBackground>
+        {[...Array(10)].map((_, index) => (
+          <circle
+            key={index}
+            cx={`${Math.random() * 100}vw`} // Random horizontal position
+            cy={`${Math.random() * 100}vh`} // Random vertical position
+            r="50" // Fixed radius for round circles
+            fill={`hsl(${Math.random() * 360}, 70%, 50%)`} // Random color
+            style={{ opacity: 0.1 }} // Opacity for circles
+          />
+        ))}
+      </CircleBackground> 
       <ContentWithPaddingXl>
         <HeadingContainer>
           {subheading && <Subheading>{subheading}</Subheading>}

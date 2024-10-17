@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import tw from "twin.macro";
 
+import rmcplantImage from '../../images/rmc.JPG';
+import rmcplantVideo from '../../images/rmc.mp4'; // Import RMC video
+import crusher from "../../images/crusher.JPG";
+import crusherVideo from "../../images/crusher.mp4"; // Import Crusher video
+
 const Container = tw.div`max-w-screen-lg mx-auto p-4`;
 const Title = tw.h1`text-4xl font-bold text-center mb-8`;
 const CardContainer = tw.div`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center`;
@@ -13,6 +18,7 @@ const Modal = tw.div`fixed inset-0 bg-black bg-opacity-75 flex items-center just
 const ModalContainer = tw.div`relative w-[90%] max-w-screen-lg`;
 const CloseButton = tw.button`absolute top-0 right-0 m-4 text-white text-3xl transition-transform transform hover:scale-110 z-10`;
 const Image = tw.img`h-96 w-auto object-cover mx-auto opacity-75`; // Adjusted opacity for the image
+const Video = tw.video`h-96 w-auto object-cover mx-auto`; // Video style without controls
 const MoreEquipmentsButtonContainer = tw.div`flex justify-center mt-8`;
 const MoreEquipmentsButton = tw.button`py-2 px-6 bg-green-400 text-white font-bold rounded-lg transition-transform transform hover:scale-105`;
 
@@ -20,12 +26,14 @@ const EquipmentList = () => {
   const navigate = useNavigate(); // Initialize useNavigate
   const equipmentData = [
     {
-      title: "Apollo Hot Mix Plant",
-      image: "https://5.imimg.com/data5/SELLER/Default/2021/5/TV/ZF/JL/8809730/apollo-hot-mix-plant-500x500.jpeg",
+      title: "RMC Plant",
+      image: rmcplantImage,
+      video: rmcplantVideo, // Add video property for RMC Plant
     },
     {
-      title: "Wirtgen - Milling Machine",
-      image: "https://5.imimg.com/data5/SELLER/Default/2022/6/GJ/TO/NU/34635285/w-115-c5-cold-milling-machine-500x500.JPG",
+      title: "Crusher",
+      image: crusher,
+      video: crusherVideo // Add video property for Crusher
     },
     {
       title: "Vogele",
@@ -60,10 +68,12 @@ const EquipmentList = () => {
     }
   };
 
-  // Function to handle button click
-  const handleMoreEquipmentsClick = () => {
-    navigate('/equipments'); // Navigate to /equipments
-  };
+ // Function to handle button click
+const handleMoreEquipmentsClick = () => {
+  navigate('/equipments');
+  window.scrollTo(0, 0); // Scroll to the top of the page
+};
+
 
   return (
     <Container>
@@ -91,10 +101,22 @@ const EquipmentList = () => {
         <Modal onClick={handleOverlayClick}>
           <ModalContainer>
             <CloseButton onClick={closeModal}>&times;</CloseButton>
-            <Image
-              src={equipmentData[selectedImageIndex].image}
-              alt={equipmentData[selectedImageIndex].title}
-            />
+            {equipmentData[selectedImageIndex].title === "RMC Plant" ? (
+              <Video autoPlay muted loop>
+                <source src={rmcplantVideo} type="video/mp4" />
+                Your browser does not support the video tag.
+              </Video>
+            ) : equipmentData[selectedImageIndex].title === "Crusher" ? (
+              <Video autoPlay muted loop>
+                <source src={crusherVideo} type="video/mp4" />
+                Your browser does not support the video tag.
+              </Video>
+            ) : (
+              <Image
+                src={equipmentData[selectedImageIndex].image}
+                alt={equipmentData[selectedImageIndex].title}
+              />
+            )}
           </ModalContainer>
         </Modal>
       )}
