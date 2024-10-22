@@ -12,7 +12,8 @@ import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-7.svg";
 
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
-const Header = tw(SectionHeading)``;
+const Header = tw(SectionHeading)`text-[#008C8C]`;
+
 const TabsControl = tw.div`flex flex-wrap bg-gray-200 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
 
 const TabControl = styled.div`
@@ -20,7 +21,7 @@ const TabControl = styled.div`
   &:hover {
     ${tw`bg-gray-300 text-gray-700`}
   }
-  ${props => props.active && tw`bg-primary-500! text-gray-100!`}
+  ${props => props.active && tw`bg-[#008C8C]! text-gray-100!`}
   }
 `;
 
@@ -61,9 +62,9 @@ const CardHoverOverlay = styled(motion.div)`
 const CardButton = tw(PrimaryButtonBase)`text-sm`;
 
 
-const CardText = tw.div`p-4 text-gray-900`;
+const CardText = tw.div`p-4 text-white`;
 const CardTitle = styled.h5`
-  ${tw`text-lg font-semibold group-hover:text-primary-500`};
+  ${tw`text-lg font-semibold group-hover:text-[#008C8C]`};
   font-size: clamp(0.8rem, 1.2vw, 1rem); /* Dynamically adjust font size */
   max-width: 100%; /* Ensure it doesn't overflow */
   text-align: center; /* Center the text */
@@ -177,10 +178,7 @@ export default ({
   const tabsKeys = ["Completed", "Signature", "Ongoing"]; // Define the order here
 const [activeTab, setActiveTab] = useState(tabsKeys[0]); 
 
-return (
-
-
-
+return (<div className="contain" style={{ backgroundColor: "#00354f" }}>
   <Container>
     
 
@@ -222,7 +220,7 @@ return (
               <div className="group" href={card.url} initial="rest" whileHover="hover" animate="rest">
                 <div className="img1">
                   <CardImage src={card.imageSrc} />
-                  <Link to={`/project/${card.project_id}`} className="more">MORE</Link>
+                  <Link to={`/project/${card.project_id}`}  className="more">MORE</Link>
                 </div>
 
                 <CardText>
@@ -237,6 +235,8 @@ return (
     <DecoratorBlob1 />
     <DecoratorBlob2 />
   </Container>
+</div>
+
 
 );
 };

@@ -1,5 +1,6 @@
-/* Fixed Box Container */
+
 #fixed-box {
+    
     background: #FFF;
     padding: 20px;
     width: 100%;
@@ -58,8 +59,9 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    text-align: center;
-    padding: 22px;
+    text-align: center ;
+    /* padding: 22px; */
+    padding-top: 25px;
     box-sizing: border-box;
     font-family: 'Gilroy-ExtraBold';
     color: #FFF;

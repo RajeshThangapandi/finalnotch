@@ -1,151 +1,113 @@
-.founder-container {
+.wrapper {
     width: 100%;
-    position: relative;
-    background-color: #00354f;
+    height: 100vh; /* Full viewport height */
     display: flex;
-    align-items: center;
-    background-image: url('../../images/road.png');
-    /* padding: 4rem 0 0; */
-    font-family: "Encode Sans", sans-serif;
-    background-position: 103% bottom;
-
-    background-size: 52%;
-    background-repeat: no-repeat;
-}
-.founder-img div img{
-    width: 100%;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    background-color: #00354f; /* Background color */
 }
 
-.founder-notes{
+.container {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    /* padding: 2rem 0 0; */
-}
-.title{
-    font-size: 36px;
-    font-weight: 400;
-    color:#fff
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: center; /* Center the container items */
+    align-items: center; /* Center items vertically */
+    /* Optional: Add max-width to prevent the container from being too wide */
+    max-width: 1200px; /* Set a max width for the container */
+    width: 100%; /* Full width */
 }
 
-.founder-notes p{
-    font-size: 20px;
-    font-weight: 300;
-    color: #fff;
-    max-width: 700px;
-}
-
-.founder-container .custom-container {
+.card {
+    position: relative; /* Necessary for positioning overlay */
+    width: 150px; /* Card width */
+    height: 250px; /* Card height */
+    border-radius: 2rem; /* Rounded corners */
+    background-size: cover; /* Ensure background covers the card */
+    cursor: pointer;
+    overflow: hidden;
+    margin: 0 15px; /* Adjust margin for spacing */
     display: flex;
-    justify-content: flex-end;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    transition: transform 0.3s, opacity 0.3s; /* Smooth transition for hover */
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.8); /* Shadow for visibility */
 }
 
-.founder-container .custom-container2 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+.card-image {
+    max-width: 100%; /* Ensure image doesn't exceed card width */
+    max-height: 100%; /* Ensure image doesn't exceed card height */
+    object-fit: cover; /* Ensure the image covers the card area */
+    border-radius: 2rem; /* Match card corners */
+    display: block; /* Ensure it behaves as a block element */
 }
 
-.custom-container2 {
-    width: 97%;
-    display: flex;
+.overlay {
+    position: absolute; /* Position overlay absolutely */
+    top: 0; /* Cover the entire card */
+    left: 0; /* Cover the entire card */
+    right: 0; /* Cover the entire card */
+    bottom: 0; /* Cover the entire card */
+    display: flex; /* Use flex to center text */
+    flex-direction: column; /* Stack text vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    color: white; /* Text color */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s; /* Smooth transition for hover */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 20px; /* Add padding for better spacing */
+    text-align: center; /* Center align text */
 }
 
-.founder-content {
-    width: calc(50% - 1rem);
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    color: #FFF;
-    position: relative;
-    z-index: 99;
-    /* padding: 6rem 0; */
-    padding-top: 20px;
-    padding-bottom: 20px;
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
 }
 
-.founder-img {
-    width: calc(50% - 1rem);
-    line-height: 0;
-    display: flex;
-    justify-content: flex-start;
+.card-title {
+    color: #FFD700; /* Attractive gold color */
+    font-size: 1.5rem; /* Font size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
+    margin: 10px 0; /* Spacing above and below */
+    z-index: 1; /* Ensure text is above overlay */
 }
 
-/* Media Queries */
-
-@media only screen and (max-width: 1024px) {
-    .founder-container {
-        background-position: bottom;
-        background-size: 90%;
-        padding: 3rem 0; /* Adjust padding for smaller screens */
-    }
-
-    .founder-container .custom-container2 {
-        justify-content: center;
-        gap: 1rem; /* Reduce gap on smaller screens */
-    }
-
-    .founder-content, 
-    .founder-img {
-        width: 100%; /* Make content and image take full width on smaller screens */
-        padding: 2rem 0; /* Adjust padding for better spacing */
-        text-align: center; /* Center-align text on smaller screens */
-    }
-
-    .founder-img {
-        justify-content: center; /* Center the image on smaller screens */
-    }
+.overlay p {
+    color: #E0E0E0; /* Light gray for message text */
+    font-size: 1rem; /* Font size for the message */
+    margin: 10px 0; /* Spacing */
 }
 
-@media only screen and (max-width: 768px) {
-    .founder-container {
-        padding: 2rem 0;
-    }
-
-    .founder-content {
-        padding: 1.5rem 0;
-    }
-
-    .founder-img img {
-        max-width: 80%; /* Limit image width on small devices */
-    }
+.overlay h3 {
+    color: #FFFFFF; /* White color for the name */
+    font-size: 1.2rem; /* Font size for the name */
+    font-weight: bold; /* Bold text */
+    margin: 5px 0; /* Spacing */
 }
 
-@media only screen and (max-width: 480px) {
-    .founder-container {
-        padding: 1.5rem 0;
-    }
-
-    .founder-content {
-        font-size: 0.9rem; /* Reduce font size on very small screens */
-        padding: 1rem 0;
-    }
-
-    .founder-img img {
-        max-width: 70%; /* Further limit image size for small phones */
-    }
+.overlay h4 {
+    color: #CCCCCC; /* Light gray for the position */
+    font-size: 1rem; /* Font size for the position */
+    font-style: italic; /* Italic style */
+    margin: 5px 0; /* Spacing */
 }
 
-.dot-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px; /* Space between dots */
-    margin-top: 20px; /* Space above the dots */
+/* Background colors for cards */
+.card[for="c1"],
+.card[for="c2"],
+.card[for="c3"] {
+    background-color: #008C8C; /* Same background color for all cards */
 }
 
-.dot {
-    width: 12px; /* Width of the dot */
-    height: 12px; /* Height of the dot */
-    background-color: black; /* Default color */
-    border-radius: 50%; /* Make it circular */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+/* Radio buttons (hidden) */
+input {
+    display: none; /* Hide radio buttons */
 }
 
-.dot.active {
-    background-color: #00aaff; /* Color for the active dot */
+/* Styles for when input is checked */
+input:checked + label {
+    width: 700px; /* Increase width when checked */
 }
 
-.dot:hover {
-    background-color: #0099cc; /* Color for hover effect */
+input:checked + label .overlay {
+    opacity: 1 !important; /* Show overlay when the corresponding input is checked */
 }

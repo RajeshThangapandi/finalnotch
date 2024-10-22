@@ -18,16 +18,18 @@ const Row = tw.div`flex flex-col md:flex-row items-center justify-center px-8`;
 const TextColumn = tw.div`flex flex-col sm:flex-row items-center justify-center md:justify-start`;
 const EmailNewsletterIcon = tw(EmailNewsletterIconBase)`w-16 h-16 text-green-500`;
 const HeadingInfoContainer = tw.div`sm:ml-6 mt-6 sm:mt-0 text-center md:text-left`;
-const Heading = tw(SectionHeading)`text-gray-100 leading-none`;
+const Heading = tw(SectionHeading)`text-white leading-none`;
 
 const FooterContent = tw.div`mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-screen-md mx-auto text-gray-400 text-sm text-center md:text-left`;
-const FooterColumn = tw.div`flex flex-col items-center md:items-start`;
-const FooterHeading = tw.h4`text-gray-100 font-bold text-lg mb-2`;
-const FooterItem = tw.p`mb-1`;
+const FooterColumn = tw.div`flex flex-col items-center md:items-start mb-8`; // Added margin-bottom for space between sections
+const FooterHeading = tw.h4`text-white font-bold text-lg mb-2`;
+const FooterItem = tw.p`text-white mb-1`;
 
 export default () => {
-  return (
-    <Container css={CustomPadding}>
+  return (<Container css={CustomPadding} style={{
+      backgroundImage: "linear-gradient(to right, rgba(0, 53, 79, 1), rgba(0, 53, 79, 0.8))", // Adjust opacity as needed
+      padding: '20px', // Add some padding if needed
+    }}>
       <Content>
         <Row>
           <TextColumn>
@@ -65,5 +67,7 @@ export default () => {
         </FooterContent>
       </Content>
     </Container>
+
+
   );
 };

@@ -20,6 +20,7 @@ export default () => {
   const companyEmail = "contracts@notchindiaprojects.com"; // Replace with the official company email
 
   return (
+    <div style={{ backgroundColor: "#00354f" }}>
     <Container>
       <Content>
         <FormContainer>
@@ -39,5 +40,7 @@ export default () => {
         </FormContainer>
       </Content>
     </Container>
+    </div>
+
   );
 };

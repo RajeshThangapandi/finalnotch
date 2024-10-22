@@ -5,7 +5,7 @@ import { SectionHeading, Subheading as SubheadingBase } from "components/misc/He
 import { SectionDescription } from "components/misc/Typography";
 
 // Styling
-const Container = tw(ContainerBase)`my-8 lg:my-10 bg-[#00354f] text-gray-100 -mx-8 px-8`;
+const Container = tw(ContainerBase)` bg-[#00354f] text-gray-100 -mx-8 px-8`;
 const HeadingContainer = tw.div``;
 const Heading = tw(SectionHeading)`sm:text-3xl md:text-4xl lg:text-5xl`;
 const Subheading = tw(SubheadingBase)`text-gray-100 text-center`;
@@ -95,8 +95,8 @@ export default ({
     }
   }, [isVisible, stats]);
 
-  return (
-    <Container ref={sectionRef}> {/* Add ref to the container */}
+  return (<div style={{ backgroundColor: "#00354f" }}>
+  <Container ref={sectionRef}> {/* Add ref to the container */}
       <ContentWithPaddingXl>
         <HeadingContainer>
           {subheading && <Subheading>{subheading}</Subheading>}
@@ -113,5 +113,7 @@ export default ({
         </StatsContainer>
       </ContentWithPaddingXl>
     </Container>
+  </div>
+  
   );
 };

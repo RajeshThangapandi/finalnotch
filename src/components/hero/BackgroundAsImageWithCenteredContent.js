@@ -9,22 +9,18 @@ import img3 from "../../images/home4.JPG";
 import img4 from "../../images/home1.jpg";
 import { useNavigate } from 'react-router-dom'; 
 
-
-// Styled Header without any background and higher z-index
+// Styled Header with a bottom margin for spacing
 const StyledHeader = styled(Header)`
-  ${tw`fixed top-0 left-0 w-full z-30`} /* Ensuring Header stays above the carousel */
-  transition: all 0.3s ease;
-
+  ${tw`fixed top-0 left-0 w-full z-30 transition-all duration-300`} 
+  background-color: ${({ isScrolled }) => (isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent')}; 
+  box-shadow: ${({ isScrolled }) => (isScrolled ? '0 4px 12px rgba(0, 0, 0, 0.1)' : 'none')}; 
+  
   ${NavLink} {
     ${({ isScrolled }) =>
       isScrolled
-        ? tw`hover:border-black hover:text-black`
-        : tw`text-white hover:border-gray-300 hover:text-gray-300`}
-  }
+        ? tw`hover:border-black hover:text-black text-black` 
+        : tw`text-white hover:border-gray-300 hover:text-gray-300`} 
 `;
-
-// Opacity overlay on the image
-// const OpacityOverlay = tw.div`absolute inset-0 bg-black opacity-50 z-10`;
 
 // Icon Container for the navigation arrows
 const IconContainer = styled.div`
@@ -50,23 +46,7 @@ const Icon = styled.button`
   font-size: 24px;
 `;
 
-const DropdownMenu = styled.div`
-  ${tw`absolute hidden flex-col bg-white shadow-lg rounded-lg py-2`}
-  min-width: 12rem;
-`;
-
-const DropdownItem = styled.a`
-  ${tw`block px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer`}
-`;
-
-const NavItemWithDropdown = styled.div`
-  ${tw`relative`}
-
-  &:hover ${DropdownMenu} {
-    ${tw`block`}
-  }
-`;
-
+// Carousel images data
 const images = [
   {
     src: img1,
@@ -91,10 +71,10 @@ const images = [
   },
   {
     src: img4,
-    author: "Author 3",
-    title: "Title 3",
-    topic: "Topic 3",
-    description: "Description for image 3.",
+    author: "Author 4",
+    title: "Title 4",
+    topic: "Topic 4",
+    description: "Description for image 4.",
   }
 ];
 
@@ -129,11 +109,7 @@ const FullWidthCarousel = ({ refs }) => {
   // Scroll listener to change NavLink color
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -143,25 +119,13 @@ const FullWidthCarousel = ({ refs }) => {
     };
   }, []);
 
-  const handleJobOpeningsClick = () => {
-    navigate('/openings'); // Navigate to /openings route
-  };
-
   const navLinks = (
     <NavLinks key={1}>
       <NavLink onClick={() => scrollToSection(refs.homeRef)} style={{ color: "#0ed1b2" }}>Home</NavLink>
       <NavLink onClick={() => scrollToSection(refs.projectRef)} style={{ color: isScrolled ? "black" : "black" }}>Projects</NavLink>
       <NavLink onClick={() => scrollToSection(refs.EqpRef)} style={{ color: isScrolled ? "black" : "black" }}>Equipments</NavLink>
       <NavLink onClick={() => scrollToSection(refs.TeamRef)} style={{ color: isScrolled ? "black" : "black" }}>Team</NavLink>
-
-      {/* Careers with Dropdown */}
-      <NavItemWithDropdown>
-        <NavLink style={{ color: isScrolled ? "black" : "black" }} className="career-link"  onClick={() => scrollToSection(refs.CareerRef)}>Careers</NavLink>
-        <DropdownMenu>
-          <DropdownItem onClick={handleJobOpeningsClick}>Job Openings</DropdownItem>
-        </DropdownMenu>
-      </NavItemWithDropdown>
-
+      <NavLink onClick={() => scrollToSection(refs.CareerRef)} style={{ color: isScrolled ? "black" : "black" }}>Careers</NavLink>
       <NavLink onClick={() => scrollToSection(refs.ContactRef)} style={{ color: isScrolled ? "black" : "black" }}>Contact Us</NavLink>
     </NavLinks>
   );
@@ -169,38 +133,56 @@ const FullWidthCarousel = ({ refs }) => {
   return (
     <>
       <StyledHeader links={navLinks} isScrolled={isScrolled} />
-      {/* Adjust the height of the carousel section */}
-      <div id="carousel-section" style={{ height: "50vh", overflow: "hidden", marginTop: "80px" }}>
-        <div className="carousel" style={{ height: "100%", width: "100%", position: "relative" }}>
+      {/* Adjusted carousel section */}
+      <div 
+        id="carousel-section" 
+        style={{ 
+          height: "calc(100vh - 130px)", // Ensures carousel maintains size based on paddingTop
+          overflow: "hidden", 
+          display: "flex", 
+          justifyContent: "center", 
+          alignItems: "center",
+          backgroundColor: "#00354f",
+          paddingTop: "130px" // Adjust this as needed
+        }}
+      >
+        <div 
+          className="carousel" 
+          style={{ 
+            height: "100%", 
+            width: "70%", 
+            position: "relative" 
+          }}
+        >
           <div className="list" style={{ height: "100%" }}>
-          {images.map((image, index) => (
-  <div
-    key={index}
-    className={`item ${index === currentIndex ? 'active' : ''}`}
-    style={{
-      zIndex: index === currentIndex ? 1 : 0,
-      height: "100%",
-      width: "100%",
-      position: "absolute",
-      top: 0,
-      left: 0,
-    }}
-  >
-    <img
-      src={image.src}
-      alt={image.title}
-      loading="lazy"  // Lazy loading attribute
-      style={{
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
-        objectPosition: "center",
-        transition: "opacity 0.5s ease-in-out",
-      }}
-    />
-  </div>
-))}
-
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={`item ${index === currentIndex ? 'active' : ''}`}
+                style={{
+                  zIndex: index === currentIndex ? 1 : 0,
+                  height: "100%",
+                  width: "100%",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  opacity: index === currentIndex ? 1 : 0,
+                  transition: "opacity 0.5s ease-in-out",
+                }}
+              >
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
+                />
+              </div>
+            ))}
           </div>
   
           <IconContainer>
@@ -215,8 +197,6 @@ const FullWidthCarousel = ({ refs }) => {
       </div>
     </>
   );
-  
-  
 };
 
 export default FullWidthCarousel;

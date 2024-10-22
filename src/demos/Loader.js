@@ -3,7 +3,6 @@ import logoimg from "../images/logotransparent.png";
 
 const Loader = ({ onLoadComplete }) => {
   useEffect(() => {
-    // Ensure the prop is a function
     if (typeof onLoadComplete !== 'function') {
       console.error('onLoadComplete is not a function');
       return;
@@ -32,18 +31,10 @@ const Loader = ({ onLoadComplete }) => {
           cy="50" 
           r="45" 
           fill="none" 
-          stroke="#e0e0e0" 
-          strokeWidth="8"
-        />
-        <circle 
-          cx="50" 
-          cy="50" 
-          r="45" 
-          fill="none" 
           stroke="#00354f" 
           strokeWidth="3"
           strokeLinecap="round"
-          strokeDasharray="283" // 2 * PI * R (where R is 45)
+          strokeDasharray="283" 
           strokeDashoffset="283"
           style={{
             animation: "progress 2s linear forwards"
@@ -76,11 +67,11 @@ const styles = {
     alignItems: 'center',
     height: '100vh',
     position: 'relative',
+    backgroundColor: 'white', // Keep the loader background white
   },
   logo: {
     width: '100px', // Adjust width as needed
     position: 'absolute',
-    // Adjust this value for vertical spacing
   },
   progressCircle: {
     width: '200px', // Size of the SVG

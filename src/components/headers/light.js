@@ -5,21 +5,22 @@ import styled from "styled-components";
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
-import logo from "../../images/logotransparent.png";
+import logoimg from "../../images/logotransparent.png";
 
 // Create StyledHeader with scrolling effect
 // Create StyledHeader with a fixed white background
 const StyledHeader = styled.header(() => [
-  tw`flex justify-between items-center w-full fixed top-0 left-0 z-50 px-4 py-4 transition-all duration-300`, // Reduced padding
-  { backgroundColor: 'rgba(255, 255, 255, 1)', height: '70px' }, // Optional: Set a fixed height
+  tw`flex justify-between items-center w-full fixed top-0 left-0 z-50 px-4 py-4 transition-all duration-300`, 
+  { backgroundColor: 'rgba(255, 255, 255, 1)', height: '90px' }, // Increase height from 70px to 90px
 ]);
 
-// Update NavLink styles with smaller font size
+
 export const NavLink = styled.a`
   ${tw`my-1 lg:mx-4 lg:my-0 font-semibold tracking-wide transition duration-300 pb-1 border-b-2 border-transparent`}
   
-  font-size: 0.9rem; // Reduced font size for a more compact look
+  font-size: 1.2rem; // Increased font size for nav links
   color: black;
+  cursor: pointer; // Ensure pointer shows when hovering over nav links
 
   &:nth-child(1) {
     color: ${({ isScrolled }) => (isScrolled ? 'gray' : '#0ed1b2')};
@@ -29,8 +30,12 @@ export const NavLink = styled.a`
     color: black;
   }
 
+  // Hover effects
   &:hover {
-    color: rgb(37, 150, 190);
+    color: rgb(37, 150, 190); // Change text color on hover
+    border-color: rgb(37, 150, 190); // Add a bottom border on hover
+    transform: scale(1.05); // Slight zoom effect on hover
+    cursor: pointer; // Pointer shows on hover
   }
 
   @media (max-width: 1024px) {
@@ -41,9 +46,12 @@ export const NavLink = styled.a`
   }
 
   @media (max-width: 1024px) {
-    font-size: 0.8rem; // Further reduce font size for mobile
+    font-size: 1rem; // Adjust for mobile if needed
   }
 `;
+
+
+
 
 export const PrimaryLink = tw(NavLink)`
   lg:mx-0 px-6 py-2 rounded bg-green-500 text-gray-100
@@ -53,11 +61,11 @@ export const PrimaryLink = tw(NavLink)`
 // Update LogoLink padding to reduce height
 export const LogoLink = styled(NavLink)`
   ${tw`flex items-center font-black border-b-0 text-2xl! ml-0!`};
-  padding: px; // Reduced padding
+
   border-radius: 8px;
 
   img {
-    ${tw`w-16 h-16 mr-3`} // Reduce logo size if needed
+    ${tw`w-20 h-20`} // Decrease logo size
   }
 `;
 
@@ -124,7 +132,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
 
   const defaultLogoLink = (
     <LogoLink href="/">
-      <img src={logo} alt="logo" />
+      <img src={logoimg} alt="logo" />
     </LogoLink>
   );
 

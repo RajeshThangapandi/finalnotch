@@ -23,20 +23,11 @@ const Subheading = styled(SubheadingBase)`
   color: #32c5d2;
   ${tw`text-center md:text-left`}
 `;
-const Heading = tw(SectionHeading)`font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+const Heading = tw(SectionHeading)`font-black text-white text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const PrimaryButton = styled(PrimaryButtonBase)(({ buttonRounded }) => [
-  tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0`,
+  tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0 bg-[#008C8C]`,
   buttonRounded && tw`rounded-full`
 ]);
-
-// Description component
-const Description = styled.p`
-  ${tw`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`}
-  font-family: "Arial, sans-serif"; // Set the same font family as in "About Us"
-  @media (max-width: 300px) {
-    ${tw`text-xs`} // Smaller font size for very small screens
-  }
-`;
 
 // Outer container styled component
 const OuterContainer = styled.div`
@@ -115,15 +106,15 @@ const MainComponent = ({
   ),
   description = (
     <>
-      <Description>
+      <p style={{ textAlign: "justify", lineHeight: "1.5" , color:"white"}}>
         At Notch India Projects, we pride ourselves on being a trusted partner in India’s road infrastructure development.
         With over 20 years of experience, our company, founded by A.D. Meenaachi Sundram, a first-generation entrepreneur, has grown into a leading force in the industry, achieving a gross turnover of 459 crores in the financial year 2023-2024.
-      </Description>
+      </p>
       <br />
-      <Description>
+      <p style={{ textAlign: "justify", lineHeight: "1.5" , color:"white"}}>
         We specialize in a wide range of infrastructure services, including overlaying, road widening, forming new bypasses, and constructing major bridges.
         With the most number of batch mix plants in Tamil Nadu, we’ve established ourselves as the state’s leading overlaying contractor, ensuring quality and reliability in every project we undertake.
-      </Description>
+      </p>
     </>
   ),
   primaryButtonText = "Contact Us",
@@ -135,17 +126,17 @@ const MainComponent = ({
   imageShadow = false,
   textOnLeft = true
 }) => {
-  return (
-    <OuterContainer>
+  return (<div style={{ backgroundColor: "#00354f" }}>
+    <OuterContainer >
       <CircleBackground>
         {[...Array(10)].map((_, index) => (
           <circle
             key={index}
-            cx={`${Math.random() * 100}vw`} // Random horizontal position
-            cy={`${Math.random() * 100}vh`} // Random vertical position
-            r="50" // Fixed radius for round circles
-            fill={`hsl(${Math.random() * 360}, 70%, 50%)`} // Random color
-            style={{ opacity: 0.1 }} // Opacity for circles
+            cx={`${Math.random() * 100}vw`}
+            cy={`${Math.random() * 100}vh`}
+            r="50"
+            fill={`hsl(${Math.random() * 360}, 70%, 50%)`}
+            style={{ opacity: 0.1 }}
           />
         ))}
       </CircleBackground>
@@ -165,7 +156,7 @@ const MainComponent = ({
 
           <ImageColumn>
             <Swiper
-              modules={[Navigation, Pagination]} // Only import Navigation and Pagination
+              modules={[Navigation, Pagination]}
               navigation={{
                 prevEl: ".left",
                 nextEl: ".right",
@@ -178,7 +169,7 @@ const MainComponent = ({
               {imageSrcs.map((src, index) => (
                 <SwiperSlide key={index}>
                   <Image
-                    src={src} // Directly set the src attribute for immediate loading
+                    src={src}
                     alt={`Carousel Image ${index + 1}`}
                     imageBorder={imageBorder}
                     imageShadow={imageShadow}
@@ -198,6 +189,8 @@ const MainComponent = ({
         </TwoColumn>
       </Container>
     </OuterContainer>
+  </div>
+
   );
 };
 

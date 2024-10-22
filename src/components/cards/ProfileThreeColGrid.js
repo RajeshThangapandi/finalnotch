@@ -10,7 +10,7 @@ import { ReactComponent as LinkedinIcon} from "images/linkedin-icon.svg";
 import { ReactComponent as GithubIcon } from "images/github-icon.svg";
 
 const HeadingContainer = tw.div``
-const Heading = tw(SectionHeading)``
+const Heading = tw(SectionHeading)`text-[rgba(47,197,210,var(--tw-text-opacity))]`
 const Subheading = tw(SubheadingBase)`text-center mb-3`
 const Description = tw(SectionDescription)`mx-auto text-center`
 
@@ -31,7 +31,7 @@ const CardImage = styled.div`
 const CardContent = styled.div`
   ${tw`flex flex-col items-center mt-6`}
   .position {
-    ${tw`uppercase font-bold tracking-widest text-xs text-primary-500`}
+    ${tw`uppercase font-bold tracking-widest text-xs text-[#008C8C]`}
   }
   .name {
     ${tw`mt-1 text-xl font-medium text-gray-900`}
@@ -51,7 +51,7 @@ const CardLinks = styled.div`
 export default ({
   heading = "Meet These Fine Folks.",
   subheading = "Our Team",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+ 
   cards = [
     {
       imageSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJIwASCJpICHRbFDOQXQ2S-pmikc8vs6K2GA&s",
@@ -169,8 +169,8 @@ export default ({
     },
   ]
 }) => {
-  return (
-    <Container>
+  return (<div style={{ backgroundColor: "#00354f" }}>
+   <Container>
       <CircleBackground>
         {[...Array(10)].map((_, index) => (
           <circle
@@ -187,7 +187,7 @@ export default ({
         <HeadingContainer>
           {subheading && <Subheading>{subheading}</Subheading>}
           {heading && <Heading>{heading}</Heading> }
-          {description && <Description>{description}</Description> }
+       
         </HeadingContainer>
         <Cards>
           {cards.map((card, index) => (
@@ -195,7 +195,8 @@ export default ({
               <CardImage imageSrc={card.imageSrc} />
               <CardContent>
                 <span className="position">{card.position}</span>
-                <span className="name">{card.name}</span>
+                <span className="name text-white">{card.name}</span>
+
                 <CardLinks>
                   {card.links.map((link, linkIndex) => (
                     <a key={linkIndex} className="link" href={link.url}>
@@ -209,5 +210,7 @@ export default ({
         </Cards>
       </ContentWithPaddingXl>
     </Container>
+  </div>
+ 
   );
 };

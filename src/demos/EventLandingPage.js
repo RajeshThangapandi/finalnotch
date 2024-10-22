@@ -4,8 +4,8 @@ import SimpleSubscribeNewsletter from "components/forms/SimpleSubscribeNewslette
 import SequentialAnimatedBarChart from "components/headers/BarChart";
 import FounderVisionSection from "components/headers/Founder";
 import Loader from "./Loader"; // Import your Loader component
-import Testing from "./Testing";
-import TestingCard from "./Testing";
+import Carousel from "./Carousel";
+import "../styles/style.css"
 
 // Lazy load non-critical components
 const AnimationRevealPage = lazy(() => import("helpers/AnimationRevealPage"));
@@ -17,6 +17,7 @@ const TabCardGrid = lazy(() => import("components/cards/TabCardGrid"));
 const BackToTop = lazy(() => import("components/headers/BackTotop"));
 const MainFeature2 = lazy(() => import("components/features/TwoColSingleFeatureWithStats2"));
 const ThreeColCenteredStatsPrimaryBackground = lazy(() => import("components/features/ThreeColCenteredStatsPrimaryBackground"));
+
 
 const MainComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -81,7 +82,7 @@ const MainComponent = () => {
               <TabCardGrid heading="Our Projects" />
             </div>
 
-            <div ref={EqpRef}>
+            <div ref={EqpRef} id="eqpref">
               <MainFeature2 heading="Our Equipments" />
             </div>
 
@@ -98,7 +99,7 @@ const MainComponent = () => {
             <div ref={ContactRef}>
               <SimpleSubscribeNewsletter />
             </div>
-
+{/* <Carousel/> */}
             <BackToTop />
           </AnimationRevealPage>
         </Suspense>

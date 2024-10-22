@@ -8,7 +8,8 @@ import crusher from "../../images/crusher.JPG";
 import crusherVideo from "../../images/crusher.mp4"; // Import Crusher video
 
 const Container = tw.div`max-w-screen-lg mx-auto p-4`;
-const Title = tw.h1`text-4xl font-bold text-center mb-8`;
+const Title = tw.h1`text-4xl font-bold text-center mb-8 text-[#2fc5d2]`; // Set title color to #2fc5d2
+
 const CardContainer = tw.div`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center`;
 const Card = tw.div`relative max-w-xs w-full cursor-pointer transition-transform transform hover:scale-105`;
 const CardImage = tw.img`w-full h-48 object-cover rounded-lg`;
@@ -75,8 +76,8 @@ const handleMoreEquipmentsClick = () => {
 };
 
 
-  return (
-    <Container>
+  return (<div style={{ backgroundColor: "#00354f" }}>
+  <Container>
       <Title>Construction Site Equipment</Title>
       <CardContainer>
         {equipmentData.map((equipment, index) => (
@@ -121,6 +122,8 @@ const handleMoreEquipmentsClick = () => {
         </Modal>
       )}
     </Container>
+  </div>
+  
   );
 };
 

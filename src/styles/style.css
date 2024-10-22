@@ -1,0 +1,13 @@
+/* globalStyles.css */
+body {
+    background-color: #00354f !important;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Optional: Set your preferred font */
+  }
+  
+  /* Optional: Apply text color to contrast with the dark background */
+  * {
+    color: white;
+  }
+  
