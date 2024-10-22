@@ -7,19 +7,21 @@ import img1 from "../../images/home2.JPG";
 import img2 from "../../images/home3.JPG";
 import img3 from "../../images/home4.JPG";
 import img4 from "../../images/home1.jpg";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from "react-router-dom";
 
 // Styled Header with a bottom margin for spacing
 const StyledHeader = styled(Header)`
-  ${tw`fixed top-0 left-0 w-full z-30 transition-all duration-300`} 
-  background-color: ${({ isScrolled }) => (isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent')}; 
-  box-shadow: ${({ isScrolled }) => (isScrolled ? '0 4px 12px rgba(0, 0, 0, 0.1)' : 'none')}; 
-  
+  ${tw`fixed top-0 left-0 w-full z-30 transition-all duration-300`}
+  background-color: ${({ isScrolled }) =>
+    isScrolled ? "rgba(255, 255, 255, 0.95)" : "transparent"};
+  box-shadow: ${({ isScrolled }) =>
+    isScrolled ? "0 4px 12px rgba(0, 0, 0, 0.1)" : "none"};
+
   ${NavLink} {
     ${({ isScrolled }) =>
       isScrolled
-        ? tw`hover:border-black hover:text-black text-black` 
-        : tw`text-white hover:border-gray-300 hover:text-gray-300`} 
+        ? tw`hover:border-black hover:text-black text-black`
+        : tw`text-white hover:border-gray-300 hover:text-gray-300`}
 `;
 
 // Icon Container for the navigation arrows
@@ -48,47 +50,16 @@ const Icon = styled.button`
 
 // Carousel images data
 const images = [
-  {
-    src: img1,
-    author: "Author 1",
-    title: "Title 1",
-    topic: "Topic 1",
-    description: "Description for image 1.",
-  },
-  {
-    src: img2,
-    author: "Author 2",
-    title: "Title 2",
-    topic: "Topic 2",
-    description: "Description for image 2.",
-  },
-  {
-    src: img3,
-    author: "Author 3",
-    title: "Title 3",
-    topic: "Topic 3",
-    description: "Description for image 3.",
-  },
-  {
-    src: img4,
-    author: "Author 4",
-    title: "Title 4",
-    topic: "Topic 4",
-    description: "Description for image 4.",
-  }
+  { src: img1, author: "Author 1", title: "Title 1", topic: "Topic 1" },
+  { src: img2, author: "Author 2", title: "Title 2", topic: "Topic 2" },
+  { src: img3, author: "Author 3", title: "Title 3", topic: "Topic 3" },
+  { src: img4, author: "Author 4", title: "Title 4", topic: "Topic 4" },
 ];
 
 const FullWidthCarousel = ({ refs }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
-
-  const scrollToSection = (elementRef) => {
-    elementRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -102,7 +73,6 @@ const FullWidthCarousel = ({ refs }) => {
     const interval = setInterval(() => {
       handleNext();
     }, 3000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -111,13 +81,16 @@ const FullWidthCarousel = ({ refs }) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (elementRef) => {
+    elementRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   const navLinks = (
     <NavLinks key={1}>
@@ -125,7 +98,7 @@ const FullWidthCarousel = ({ refs }) => {
       <NavLink onClick={() => scrollToSection(refs.projectRef)} style={{ color: isScrolled ? "black" : "black" }}>Projects</NavLink>
       <NavLink onClick={() => scrollToSection(refs.EqpRef)} style={{ color: isScrolled ? "black" : "black" }}>Equipments</NavLink>
       <NavLink onClick={() => scrollToSection(refs.TeamRef)} style={{ color: isScrolled ? "black" : "black" }}>Team</NavLink>
-      <NavLink onClick={() => scrollToSection(refs.CareerRef)} style={{ color: isScrolled ? "black" : "black" }}>Careers</NavLink>
+      <NavLink style={{ color: isScrolled ? "black" : "black" }} className="career-link" onClick={() => scrollToSection(refs.CareerRef)}>Careers</NavLink>
       <NavLink onClick={() => scrollToSection(refs.ContactRef)} style={{ color: isScrolled ? "black" : "black" }}>Contact Us</NavLink>
     </NavLinks>
   );
@@ -134,40 +107,44 @@ const FullWidthCarousel = ({ refs }) => {
     <>
       <StyledHeader links={navLinks} isScrolled={isScrolled} />
       {/* Adjusted carousel section */}
-      <div 
-        id="carousel-section" 
-        style={{ 
+      <div
+        id="carousel-section"
+        style={{
           height: "calc(100vh - 130px)", // Ensures carousel maintains size based on paddingTop
-          overflow: "hidden", 
-          display: "flex", 
-          justifyContent: "center", 
+          overflow: "hidden",
+          display: "flex",
+          justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#00354f",
-          paddingTop: "130px" // Adjust this as needed
+          backgroundColor: "whitesmoke",
+          paddingTop: "130px", // Adjust this as needed
         }}
       >
-        <div 
-          className="carousel" 
-          style={{ 
-            height: "100%", 
-            width: "70%", 
-            position: "relative" 
+        <div
+          className="carousel"
+          style={{
+            height: "100%",
+            width: "95%", // Increased width of the carousel
+            position: "relative",
+            perspective: "1500px", // Adds 3D perspective
           }}
         >
           <div className="list" style={{ height: "100%" }}>
             {images.map((image, index) => (
               <div
                 key={index}
-                className={`item ${index === currentIndex ? 'active' : ''}`}
+                className={`item ${index === currentIndex ? "active" : ""}`}
                 style={{
-                  zIndex: index === currentIndex ? 1 : 0,
                   height: "100%",
                   width: "100%",
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  opacity: index === currentIndex ? 1 : 0,
-                  transition: "opacity 0.5s ease-in-out",
+                  transformStyle: "preserve-3d", // Important for 3D effect
+                  transform: index === currentIndex
+                    ? "rotateY(0deg)" // Active slide stays in place
+                    : "rotateY(180deg)", // Inactive slides flip away
+                  transition: "transform 0.8s ease-in-out",
+                  backfaceVisibility: "hidden", // Ensures clean flipping
                 }}
               >
                 <img
@@ -184,7 +161,7 @@ const FullWidthCarousel = ({ refs }) => {
               </div>
             ))}
           </div>
-  
+
           <IconContainer>
             <Icon onClick={handlePrev}>
               <MdArrowBack />

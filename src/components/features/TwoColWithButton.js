@@ -23,7 +23,7 @@ const Subheading = styled(SubheadingBase)`
   color: #32c5d2;
   ${tw`text-center md:text-left`}
 `;
-const Heading = tw(SectionHeading)`font-black text-white text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+const Heading = tw(SectionHeading)`font-black text-[#00354f] text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const PrimaryButton = styled(PrimaryButtonBase)(({ buttonRounded }) => [
   tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0 bg-[#008C8C]`,
   buttonRounded && tw`rounded-full`
@@ -106,12 +106,12 @@ const MainComponent = ({
   ),
   description = (
     <>
-      <p style={{ textAlign: "justify", lineHeight: "1.5" , color:"white"}}>
+      <p style={{ textAlign: "justify", lineHeight: "1.5" , color:"gray"}}>
         At Notch India Projects, we pride ourselves on being a trusted partner in India’s road infrastructure development.
         With over 20 years of experience, our company, founded by A.D. Meenaachi Sundram, a first-generation entrepreneur, has grown into a leading force in the industry, achieving a gross turnover of 459 crores in the financial year 2023-2024.
       </p>
       <br />
-      <p style={{ textAlign: "justify", lineHeight: "1.5" , color:"white"}}>
+      <p style={{ textAlign: "justify", lineHeight: "1.5" , color:"gray"}}>
         We specialize in a wide range of infrastructure services, including overlaying, road widening, forming new bypasses, and constructing major bridges.
         With the most number of batch mix plants in Tamil Nadu, we’ve established ourselves as the state’s leading overlaying contractor, ensuring quality and reliability in every project we undertake.
       </p>
@@ -126,7 +126,7 @@ const MainComponent = ({
   imageShadow = false,
   textOnLeft = true
 }) => {
-  return (<div style={{ backgroundColor: "#00354f" }}>
+  return (<div style={{ backgroundColor: "whitesmoke" }}>
     <OuterContainer >
       <CircleBackground>
         {[...Array(10)].map((_, index) => (

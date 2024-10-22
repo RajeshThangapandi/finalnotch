@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import tw from "twin.macro";
+import tw from "twin.macro"; 
 import styled from "styled-components";
 import "./TabGrid.css"
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -178,7 +178,7 @@ export default ({
   const tabsKeys = ["Completed", "Signature", "Ongoing"]; // Define the order here
 const [activeTab, setActiveTab] = useState(tabsKeys[0]); 
 
-return (<div className="contain" style={{ backgroundColor: "#00354f" }}>
+return (<div className="contain" style={{ backgroundColor: "whitesmoke" }}>
   <Container>
     
 

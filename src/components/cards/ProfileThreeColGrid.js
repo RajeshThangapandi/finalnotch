@@ -10,7 +10,7 @@ import { ReactComponent as LinkedinIcon} from "images/linkedin-icon.svg";
 import { ReactComponent as GithubIcon } from "images/github-icon.svg";
 
 const HeadingContainer = tw.div``
-const Heading = tw(SectionHeading)`text-[rgba(47,197,210,var(--tw-text-opacity))]`
+const Heading = tw(SectionHeading)`text-[#008C8C]`
 const Subheading = tw(SubheadingBase)`text-center mb-3`
 const Description = tw(SectionDescription)`mx-auto text-center`
 
@@ -169,7 +169,7 @@ export default ({
     },
   ]
 }) => {
-  return (<div style={{ backgroundColor: "#00354f" }}>
+  return (<div style={{ backgroundColor: "whitesmoke" }}>
    <Container>
       <CircleBackground>
         {[...Array(10)].map((_, index) => (
@@ -195,8 +195,7 @@ export default ({
               <CardImage imageSrc={card.imageSrc} />
               <CardContent>
                 <span className="position">{card.position}</span>
-                <span className="name text-white">{card.name}</span>
-
+                <span className="name">{card.name}</span>
                 <CardLinks>
                   {card.links.map((link, linkIndex) => (
                     <a key={linkIndex} className="link" href={link.url}>

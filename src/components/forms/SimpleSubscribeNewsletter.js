@@ -26,10 +26,7 @@ const FooterHeading = tw.h4`text-white font-bold text-lg mb-2`;
 const FooterItem = tw.p`text-white mb-1`;
 
 export default () => {
-  return (<Container css={CustomPadding} style={{
-      backgroundImage: "linear-gradient(to right, rgba(0, 53, 79, 1), rgba(0, 53, 79, 0.8))", // Adjust opacity as needed
-      padding: '20px', // Add some padding if needed
-    }}>
+  return (<Container css={CustomPadding}>
       <Content>
         <Row>
           <TextColumn>

@@ -5,7 +5,7 @@ import SequentialAnimatedBarChart from "components/headers/BarChart";
 import FounderVisionSection from "components/headers/Founder";
 import Loader from "./Loader"; // Import your Loader component
 import Carousel from "./Carousel";
-import "../styles/style.css"
+
 
 // Lazy load non-critical components
 const AnimationRevealPage = lazy(() => import("helpers/AnimationRevealPage"));

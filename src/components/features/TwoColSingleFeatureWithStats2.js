@@ -8,7 +8,7 @@ import crusher from "../../images/crusher.JPG";
 import crusherVideo from "../../images/crusher.mp4"; // Import Crusher video
 
 const Container = tw.div`max-w-screen-lg mx-auto p-4`;
-const Title = tw.h1`text-4xl font-bold text-center mb-8 text-[#2fc5d2]`; // Set title color to #2fc5d2
+const Title = tw.h1`text-4xl font-bold text-center mb-8 text-[#008C8C]`; // Set title color to #2fc5d2
 
 const CardContainer = tw.div`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-items-center`;
 const Card = tw.div`relative max-w-xs w-full cursor-pointer transition-transform transform hover:scale-105`;
@@ -21,7 +21,7 @@ const CloseButton = tw.button`absolute top-0 right-0 m-4 text-white text-3xl tra
 const Image = tw.img`h-96 w-auto object-cover mx-auto opacity-75`; // Adjusted opacity for the image
 const Video = tw.video`h-96 w-auto object-cover mx-auto`; // Video style without controls
 const MoreEquipmentsButtonContainer = tw.div`flex justify-center mt-8`;
-const MoreEquipmentsButton = tw.button`py-2 px-6 bg-green-400 text-white font-bold rounded-lg transition-transform transform hover:scale-105`;
+const MoreEquipmentsButton = tw.button`py-2 px-6 bg-[#008C8C] text-white font-bold rounded-lg transition-transform transform hover:scale-105`;
 
 const EquipmentList = () => {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -76,7 +76,7 @@ const handleMoreEquipmentsClick = () => {
 };
 
 
-  return (<div style={{ backgroundColor: "#00354f" }}>
+  return (<div style={{ backgroundColor: "whitesmoke" }}>
   <Container>
       <Title>Construction Site Equipment</Title>
       <CardContainer>

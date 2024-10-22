@@ -35,3 +35,28 @@ const founderMessages = [
      image: "https://i.pinimg.com/474x/0a/a8/58/0aa8581c2cb0aa948d63ce3ddad90c81.jpg",
    }
  ];
+ const scrollToSection = (elementRef) => {
+  elementRef.current.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+};
+
+ const navLinks = (
+  <NavLinks key={1}>
+    <NavLink onClick={() => scrollToSection(refs.homeRef)} style={{ color: "#0ed1b2" }}>Home</NavLink>
+    <NavLink onClick={() => scrollToSection(refs.projectRef)} style={{ color: isScrolled ? "black" : "black" }}>Projects</NavLink>
+    <NavLink onClick={() => scrollToSection(refs.EqpRef)} style={{ color: isScrolled ? "black" : "black" }}>Equipments</NavLink>
+    <NavLink onClick={() => scrollToSection(refs.TeamRef)} style={{ color: isScrolled ? "black" : "black" }}>Team</NavLink>
+
+    {/* Careers with Dropdown */}
+  
+      <NavLink style={{ color: isScrolled ? "black" : "black" }} className="career-link"  onClick={() => scrollToSection(refs.CareerRef)}>Careers</NavLink>
+      {/* <DropdownMenu>
+        <DropdownItem onClick={handleJobOpeningsClick}>Job Openings</DropdownItem>
+      </DropdownMenu> */}
+
+
+    <NavLink onClick={() => scrollToSection(refs.ContactRef)} style={{ color: isScrolled ? "black" : "black" }}>Contact Us</NavLink>
+  </NavLinks>
+);
