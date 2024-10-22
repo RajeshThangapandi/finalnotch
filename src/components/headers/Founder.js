@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Founder.css';
-import img1 from "../../images/user.png";
-import img2 from "../../images/user2.png";
-import img3 from "../../images/user3.png";
-
+import img1 from "../../images/user.png"
+import img2 from "../../images/user2.png"
+import img3 from "../../images/user.png"
 const founderMessages = [
     {
         title: "Founder's Thoughts",
@@ -22,7 +21,7 @@ const founderMessages = [
         `,
         name: "M. Vetrivel Rajan",
         position: "MANAGING PARTNER",
-        image: img1,
+        image: img2,
     },
     {
         title: "Partner's Mission",
@@ -31,29 +30,21 @@ const founderMessages = [
         `,
         name: "B.Murugeshwari",
         position: "PARTNER",
-        image: img1,
+        image: img3,
     }
 ];
 
 const AnimatedFlexCards = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [showOverlay, setShowOverlay] = useState(false);
-
-    const handleCardClick = (index) => {
-        setActiveIndex(index);
-        setShowOverlay(true);
-    };
-
     return (
         <div className="wrapper">
             <div className="container">
                 {founderMessages.map((founder, index) => (
                     <React.Fragment key={index}>
                         <input type="radio" name="slide" id={`c${index + 1}`} defaultChecked={index === 0} />
-                        <label htmlFor={`c${index + 1}`} className="card" onClick={() => handleCardClick(index)}>
+                        <label htmlFor={`c${index + 1}`} className="card">
                             <div className="row">
                                 <img src={founder.image} alt={founder.name} className="card-image" />
-                                <div className={`overlay ${showOverlay && activeIndex === index ? 'active' : ''}`}>
+                                <div className="overlay">
                                     <h2 className="card-title">{founder.title}</h2>
                                     <p>{founder.message}</p>
                                     <h3>{founder.name}</h3>

@@ -6,15 +6,12 @@
     justify-content: center; /* Center horizontally */
     background-color: #00354f; /* Background color */
 }
-
 .container {
+    margin-left: 90px; /* Adjust as needed */
+    height: 500px; /* Increase height of the container */
     display: flex;
     flex-wrap: nowrap; /* Prevent wrapping */
-    justify-content: center; /* Center the container items */
-    align-items: center; /* Center items vertically */
-    /* Optional: Add max-width to prevent the container from being too wide */
-    max-width: 1200px; /* Set a max width for the container */
-    width: 100%; /* Full width */
+    justify-content: start; /* Align items to the start */
 }
 
 .card {
@@ -40,6 +37,7 @@
     border-radius: 2rem; /* Match card corners */
     display: block; /* Ensure it behaves as a block element */
 }
+
 
 .overlay {
     position: absolute; /* Position overlay absolutely */
